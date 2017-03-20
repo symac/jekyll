@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:gjtorikian/html-proofer.git
+  remote: https://github.com/gjtorikian/html-proofer.git
   revision: a371d85cd3a3f84b806d2df37dee8709cb285989
   specs:
     html-proofer (3.5.0)
