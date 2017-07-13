@@ -13,6 +13,8 @@ highlighter: rouge
 markdown: kramdown
 gems:
   - jekyll-redirect-from
+whitelist:
+  - jekyll-redirect-from
 defaults:
   -
     scope:
