@@ -13,6 +13,7 @@ difficulty: 2
 activity: acquiring
 topics: [data-manipulation]
 abstract: "This lesson will teach you how to use Python to extract a set of keywords very quickly and systematically from a set of texts."
+python_warning: true
 ---
 
 {% include toc.html %}

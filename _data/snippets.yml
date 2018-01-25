@@ -89,8 +89,10 @@ menu-lang:
 # site footer
 footer:
   license:
-    en: _The Programming Historian_ is released under a [CC-BY](https://creativecommons.org/licenses/by/4.0/deed.en) license.
-    es: _The Programming Historian en español_ se publica con una licencia [CC-BY](https://creativecommons.org/licenses/by/4.0/deed.es).
+    en: |
+      _The Programming Historian_ (ISSN: 2397-2068) is released under a [CC-BY](https://creativecommons.org/licenses/by/4.0/deed.en) license.
+    es: |
+      _The Programming Historian en español_ (ISSN: 2397-2068) se publica con una licencia [CC-BY](https://creativecommons.org/licenses/by/4.0/deed.es).
   gh-hosted:
     en: Hosted on GitHub
     es: Alojado en GitHub
@@ -114,7 +116,7 @@ sort-by-date:
   en:
     sort by publication date
   es:
-    ordenar por fecha de publicación
+    ordenar por fecha de traducción
 sort-by-difficulty:
   en:
     sort by difficulty
@@ -144,6 +146,9 @@ translator:
 translation-reviewers:
   en: translation reviewed by
   es: traducción revisada por
+translation-editors:
+  en: translation edited by
+  es: traducción editada por
 published:
   en: published
   es: publicado
@@ -168,6 +173,19 @@ series-next-note:
 contents:
   en: Contents
   es: Contenidos
+lesson-difficulty:
+  0:
+    en: Very Low
+    es: Muy Bajo
+  1:
+    en: Low
+    es: Bajo
+  2:
+    en: Medium
+    es: Medio
+  3:
+    en: High
+    es: Alto
 
 # Included in the lesson.html layout when a lesson has been marked as deprecated, and is not to be displayed on the main directory.
 deprecated:
@@ -178,12 +196,23 @@ deprecated:
 
 
 # legacy
-  and:
-     en: and
-     es: y
-  by:
-     en: by
-     es: por
-  reviewed:
-     en: reviewed
-     es: revisado
+and:
+   en: and
+   es: y
+by:
+   en: by
+   es: por
+reviewed:
+   en: reviewed
+   es: revisado
+
+python-warning:
+  en: |
+    This lesson was written using Python v. 2.x. Code may not be compatible with newer versions of Python. "[Python Introduction and Installation](/lessons/introduction-and-installation)" provides instructions for how you can install Python 2.x alongside newer versions.
+  es: |
+    Esta lección ha sido escrita utilizando Python v. 2.x. Es posible que el código no sea compatible con nuevas versiones de Python. "[Introducción a Python e instalación](/es/lecciones/introduccion-e-instalacion)" contiene una panorámica sobre cómo instalar Python 2.x y versiones posteriores.
+
+# Project Team Page
+project-team-roles:
+  en: Project Team Roles
+  es: Papel en el equipo del proyecto

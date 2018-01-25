@@ -196,7 +196,7 @@ This tutorial uses LibreOffice, which is an Open Source alternative to Microsoft
  {% include figure.html filename="QGISFigure5.png" caption="Figure 6: Copying a table into LibreOffice Base" %}
 
 * Go to the `Queries` pane and select `Create a Query using Design View` and add both tables so that you see small windows appear with lists of the field names in each table. Link the ‘Place of origin’ field in the alumni table to the `Name` field of the Counties table by dragging and dropping one field name onto the other.
-* Double click each field in the alumni table, which to adds it to the list of fields below (which define the structure of the table that you will get as the result of the query). 
+* Double click each field in the alumni table, which adds it to the list of fields below (which define the structure of the table that you will get as the result of the query). 
 * Add the `x` and `y` fields from the counties by double clicking them. This query now contains all of the data you need to be able to map your data.
 
 {% include figure.html filename="QGISFigure6.png" caption="Figure 7: The query design completed in LibreOffice Base, showing the join between the tables and the grid detailing the fields that will show in the result" %}
@@ -236,7 +236,7 @@ A more useful way of depicting the geocoded data is to use QGIS's advanced displ
 
 {% include figure.html filename="QGISFigure7.png" caption="Figure 8: The layer properties Style tab, showing point displacement styles, depicting points that actually overlap at precisely the same location" %}
 
-You have now completed the geocoding process, and can enjoy the advantages of being able to analyse this inherently spatial historical data in an spatial way. In a real world scenario, you would probably only geocode data which is more precise than simple county level, giving a good deal more analytical potential and making maps plotted more meaningful. Where you have data which can be geocoded to a high – and crucially consistent – level of precision, it is possible to conduct a wide range of geographical analyses such as measures of clustering or distances. 
+You have now completed the geocoding process, and can enjoy the advantages of being able to analyse this inherently spatial historical data in a spatial way. In a real world scenario, you would probably only geocode data which is more precise than simple county level, giving a good deal more analytical potential and making maps plotted more meaningful. Where you have data which can be geocoded to a high – and crucially consistent – level of precision, it is possible to conduct a wide range of geographical analyses such as measures of clustering or distances. 
 
 For example, you can easily tweak and refine which records are mapped by changing the definition query in the properties of your geocoded layer (Right click on `GeocodedAlumni` in Layers Panel and select `Layer Properties>General>Provider Feature Filter>Query Builder`). You can use the less than or greater than operators to define years and see if trends change over time, or use the [SQL LIKE](http://www.w3schools.com/sql/sql_like.asp) statement to query the ‘details’ column to filter particular colleges – did they tend to attract students from particular counties? These queries use standard [SQL language](http://www.w3schools.com/sql/) and can be combined with `AND`, `NOT` etc. This example would select only those students who had matriculated at Magdalen College:
 
@@ -257,7 +257,7 @@ If you only have a small number of rows in your data, or if you are having diffi
 
 ### Troubleshooting Database Gazetteer Joins
 
-While relational database queries are very powerful tools for doing customised geocoding, by allowing you to match multiple criteria simultaneously, they can also present misleading results if not checked carefully. Any data that is not matched will usually be ignored 'silently' (i.e. you will not see an error message, so it is important to check whether the total number of lines in your results matches that in your original data. 
+While relational database queries are very powerful tools for doing customised geocoding, by allowing you to match multiple criteria simultaneously, they can also present misleading results if not checked carefully. Any data that is not matched will usually be ignored 'silently' (i.e. you will not see an error message), so it is important to check whether the total number of lines in your results matches that in your original data. 
 
 If there are too few results, this means some values cannot be matched. In this table, for example, `Place of origin` includes values such as 'London' and 'Germany', which do not match any of the places in the gazetteer that we created. You could either conclude that the lower number of results is acceptable, or try to correct it by either altering places of origin, or adding locations to your gazetteer manually. Changing the properties of the join between the two tables from `Inner Join` to `Right Join` will ensure that ALL records from the alumni table are returned, whether or not there is matching data from the gazetteer `counties` table (presuming that the alumni table is on the right). This is a very useful diagnostic step.
 

@@ -251,10 +251,7 @@ appended to the start of our SPARQL query,
 `<http://data.rijksmuseum.nl/item/8909812347>` becomes `rkm:item/8909812347`
 instead.
 
-Many live databases, such as the British Museum database that we will try our
-first new queries on, already define these prefixes for us, so we won't have to
-explicitly state them in our queries. However, you should now be able to
-recognize whenever we use one in a SPARQL query. Also be aware that, prefixes
+Be aware that, prefixes
 can be arbitrarily assigned with whatever abbreviations you like, different
 endpoints may use slightly different prefixes for the same namespace (e.g. `dct`
 vs. `dcterms` for `<http://purl.org/dc/terms/>`).
@@ -287,8 +284,7 @@ relationships that stem from a single [example
 object](http://collection.britishmuseum.org/id/object/PPA82633).
 
 (For each of the following queries, click on the "Run query" link below to see
-the results. Click on the "Edit query" link to go to a page with the query
-automatically pasted the query into the BM's endpoint. You can then run it as
+the results. You can then run it as
 is, or modify it before requesting the results. Remember when editing the query
 before running to uncheck the 'Include inferred' box.)
 
@@ -299,8 +295,7 @@ WHERE {
 }
 ```
 
-[Run query](http://collection.britishmuseum.org/sparql?query=SELECT+*%0D%0AWHERE+%7B%0D%0A++%3Chttp%3A%2F%2Fcollection.britishmuseum.org%2Fid%2Fobject%2FPPA82633%3E+%3Fp+%3Fo+.%0D%0A++%7D&_implicit=false&_equivalent=false&_form=%2Fsparql) /
-[Edit query](http://collection.britishmuseum.org/sparql?sample=SELECT+*%0D%0AWHERE+%7B%0D%0A++%3Chttp%3A%2F%2Fcollection.britishmuseum.org%2Fid%2Fobject%2FPPA82633%3E+%3Fp+%3Fo+.%0D%0A++%7D)
+[Run query](http://collection.britishmuseum.org/sparql?query=SELECT+*%0D%0AWHERE+%7B%0D%0A++%3Chttp%3A%2F%2Fcollection.britishmuseum.org%2Fid%2Fobject%2FPPA82633%3E+%3Fp+%3Fo+.%0D%0A++%7D&_implicit=false&_equivalent=false&_form=%2Fsparql) 
 
 By calling `SELECT ?p ?o` we're asking the database to return the values of `?p`
 and `?o` as described in the `WHERE {}` command. This query returns every
@@ -342,6 +337,9 @@ To find other objects of the same type with the preferred label "print", we can
 call this query:
 
 ```
+PREFIX bmo: <http://www.researchspace.org/ontology/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
 SELECT ?object
 WHERE {
 
@@ -351,9 +349,10 @@ WHERE {
   # That object type should have the label "print"
   ?object_type skos:prefLabel "print" .
 }
+LIMIT 10
 ```
 
-[Run query](http://collection.britishmuseum.org/sparql?query=SELECT+%3Fobject%0D%0AWHERE+%7B%0D%0A++%3Fobject+bmo%3APX_object_type+%3Fobject_type+.%0D%0A++%3Fobject_type+skos%3AprefLabel+%22print%22+.%0D%0A%7D&_implicit=false&implicit=false&_equivalent=false&_form=%2Fsparql) / [Edit query](http://collection.britishmuseum.org/sparql?sample=PREFIX+bmo%3A+%3Chttp%3A%2F%2Fcollection.britishmuseum.org%2Fid%2Fontology%2F%3E%0APREFIX+skos%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23%3E%0ASELECT+%3Fobject%0D%0AWHERE+%7B%0D%0A++%3Fobject+bmo%3APX_object_type+%3Fobject_type+.%0D%0A++%3Fobject_type+skos%3AprefLabel+%22print%22+.%0D%0A%7D) / [See a user-generated query](https://hypothes.is/a/AVLH7aAMvTW_3w8Ly19w)
+[Run query](https://collection.britishmuseum.org/sparql#query=PREFIX+bmo%3A+%3Chttp%3A%2F%2Fwww.researchspace.org%2Fontology%2F%3E%0APREFIX+skos%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23%3E%0A%0ASELECT+%3Fobject%0AWHERE+%7B%0A%0A++%23+Search+for+all+values+of+%3Fobject+that+have+a+given+%22object+type%22%0A++%3Fobject+bmo%3APX_object_type+%3Fobject_type+.%0A%0A++%23+That+object+type+should+have+the+label+%22print%22%0A++%3Fobject_type+skos%3AprefLabel+%22print%22+.%0A%7D%0ALIMIT+10) / [See a user-generated query](https://hypothes.is/a/AVLH7aAMvTW_3w8Ly19w)
 
 {% include figure.html filename="sparql06.png" caption="A one-column table returned by our query for every object with type 'print'" %}
 
@@ -382,6 +381,11 @@ object:
 {% include figure.html filename="sparql07.svg" caption="Visualizing part of the British Museum's data model where production dates are connected to objects." %}
 
 ```
+PREFIX bmo: <http://www.researchspace.org/ontology/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX ecrm: <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
 # Return object links and creation date
 SELECT ?object ?date
 WHERE {
@@ -410,7 +414,7 @@ WHERE {
 }
 ```
 
-[Run query](http://collection.britishmuseum.org/sparql?query=%23+Return+object+links+and+creation+date%0D%0ASELECT+%3Fobject+%3Fdate%0D%0AWHERE+%7B%0D%0A%0D%0A++%23+We%27ll+use+our+previous+command+to+search+only+for+objects+of+type+%22print%22%0D%0A++%3Fobject+bmo%3APX_object_type+%3Fobject_type+.%0D%0A++%3Fobject_type+skos%3AprefLabel+%22print%22+.%0D%0A%0D%0A++%23+We+need+to+link+though+several+nodes+to+find+the+creation+date+associated%0D%0A++%23+with+an+object%0D%0A++%3Fobject+ecrm%3AP108i_was_produced_by+%3Fproduction+.%0D%0A++%3Fproduction+ecrm%3AP9_consists_of+%3Fdate_node+.%0D%0A++%3Fdate_node+ecrm%3AP4_has_time-span+%3Ftimespan+.%0D%0A++%3Ftimespan+ecrm%3AP82a_begin_of_the_begin+%3Fdate+.%0D%0A%0D%0A++%23+Yes%2C+we+need+to+connect+quite+a+few+dots+to+get+to+the+date+node%21+Now+that%0D%0A++%23+we+have+it%2C+we+can+filter+our+results.+Because+we+are+filtering+a+date%2C+we%0D%0A++%23+must+attach+the+xsd%3Adate+tag+to+our+date+strings+so+that+SPARQL+knows+how+to%0D%0A++%23+parse+them.%0D%0A%0D%0A++FILTER%28%3Fdate+%3E%3D+%221580-01-01%22%5E%5Exsd%3Adate+%26%26+%3Fdate+%3C%3D+%221600-01-01%22%5E%5Exsd%3Adate%29%0D%0A%7D&_implicit=false&_equivalent=false&_form=%2Fsparql) / [Edit query](http://collection.britishmuseum.org/sparql?sample=%23+Return+object+links+and+creation+date%0D%0APREFIX+bmo%3A+%3Chttp%3A%2F%2Fcollection.britishmuseum.org%2Fid%2Fontology%2F%3E%0APREFIX+skos%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23%3E%0APREFIX+ecrm%3A+%3Chttp%3A%2F%2Ferlangen-crm.org%2Fcurrent%2F%3E%0APREFIX+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E%0ASELECT+%3Fobject+%3Fdate%0D%0AWHERE+%7B%0D%0A%0D%0A++%23+We%27ll+use+our+previous+command+to+search+only+for+objects+of+type+%22print%22%0D%0A++%3Fobject+bmo%3APX_object_type+%3Fobject_type+.%0D%0A++%3Fobject_type+skos%3AprefLabel+%22print%22+.%0D%0A%0D%0A++%23+We+need+to+link+though+several+nodes+to+find+the+creation+date+associated%0D%0A++%23+with+an+object%0D%0A++%3Fobject+ecrm%3AP108i_was_produced_by+%3Fproduction+.%0D%0A++%3Fproduction+ecrm%3AP9_consists_of+%3Fdate_node+.%0D%0A++%3Fdate_node+ecrm%3AP4_has_time-span+%3Ftimespan+.%0D%0A++%3Ftimespan+ecrm%3AP82a_begin_of_the_begin+%3Fdate+.%0D%0A%0D%0A++%23+Yes%2C+we+need+to+connect+quite+a+few+dots+to+get+to+the+date+node%21+Now+that%0D%0A++%23+we+have+it%2C+we+can+filter+our+results.+Because+we+are+filtering+a+date%2C+we%0D%0A++%23+must+attach+the+xsd%3Adate+tag+to+our+date+strings+so+that+SPARQL+knows+how+to%0D%0A++%23+parse+them.%0D%0A%0D%0A++FILTER%28%3Fdate+%3E%3D+%221580-01-01%22%5E%5Exsd%3Adate+%26%26+%3Fdate+%3C%3D+%221600-01-01%22%5E%5Exsd%3Adate%29%0D%0A%7D)
+[Run query](https://collection.britishmuseum.org/sparql#query=PREFIX+bmo%3A+%3Chttp%3A%2F%2Fwww.researchspace.org%2Fontology%2F%3E%0APREFIX+skos%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23%3E%0APREFIX+ecrm%3A+%3Chttp%3A%2F%2Fwww.cidoc-crm.org%2Fcidoc-crm%2F%3E%0APREFIX+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E%0A%0A%23+Return+object+links+and+creation+date%0ASELECT+%3Fobject+%3Fdate%0AWHERE+%7B%0A%0A++%23+We'll+use+our+previous+command+to+search+only+for%0A++%23+objects+of+type+%22print%22%0A++%3Fobject+bmo%3APX_object_type+%3Fobject_type+.%0A++%3Fobject_type+skos%3AprefLabel+%22print%22+.%0A%0A++%23+We+need+to+link+though+several+nodes+to+find+the%0A++%23+creation+date+associated+with+an+object%0A++%3Fobject+ecrm%3AP108i_was_produced_by+%3Fproduction+.%0A++%3Fproduction+ecrm%3AP9_consists_of+%3Fdate_node+.%0A++%3Fdate_node+ecrm%3AP4_has_time-span+%3Ftimespan+.%0A++%3Ftimespan+ecrm%3AP82a_begin_of_the_begin+%3Fdate+.%0A%0A++%23+As+you+can+see%2C+we+need+to+connect+quite+a+few+dots%0A++%23+to+get+to+the+date+node!+Now+that+we+have+it%2C+we+can%0A++%23+filter+our+results.+Because+we+are+filtering+by+date%2C%0A++%23+we+must+attach+the+tag+%5E%5Exsd%3Adate+after+our+date+strings.%0A++%23+This+tag+tells+the+database+to+interpret+the+string%0A++%23+%221580-01-01%22+as+the+date+1+January+1580.%0A%0A++FILTER(%3Fdate+%3E%3D+%221580-01-01%22%5E%5Exsd%3Adate+%26%26%0A+++++++++%3Fdate+%3C%3D+%221600-01-01%22%5E%5Exsd%3Adate)%0A%7D)
 
 {% include figure.html filename="sparql08.png" caption="All BM prints made between 1580 and 1600" %}
 
@@ -426,6 +430,11 @@ Instead of limiting our results to objects of type "print", we will instead use
 `COUNT` to tally our search results by type.
 
 ```
+PREFIX bmo: <http://www.researchspace.org/ontology/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX ecrm: <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
 SELECT ?type (COUNT(?type) as ?n)
 WHERE {
   # We still need to indicate the ?object_type variable,
@@ -449,7 +458,7 @@ GROUP BY ?type
 ORDER BY DESC(?n)
 ```
 
-[Run query](http://collection.britishmuseum.org/sparql?query=SELECT+%3Ftype+%28COUNT%28%3Ftype%29+as+%3Fn%29%0D%0AWHERE+%7B%0D%0A++%23+We+still+need+to+indicate+the+%3Fobject_type+variable%2C+however+we+will+not%0D%0A++%23+require+it+to+match+%22print%22+this+time%0D%0A%0D%0A++%3Fobject+bmo%3APX_object_type+%3Fobject_type+.%0D%0A++%3Fobject_type+skos%3AprefLabel+%3Ftype+.%0D%0A%0D%0A++%23+Once+again%2C+we+will+also+filter+by+date%0D%0A++%3Fobject+ecrm%3AP108i_was_produced_by+%3Fproduction+.%0D%0A++%3Fproduction+ecrm%3AP9_consists_of+%3Fdate_node+.%0D%0A++%3Fdate_node+ecrm%3AP4_has_time-span+%3Ftimespan+.%0D%0A++%3Ftimespan+ecrm%3AP82a_begin_of_the_begin+%3Fdate+.%0D%0A++FILTER%28%3Fdate+%3E%3D+%221580-01-01%22%5E%5Exsd%3Adate+%26%26+%3Fdate+%3C%3D+%221600-01-01%22%5E%5Exsd%3Adate%29%0D%0A%7D%0D%0A%23+The+GROUP+BY+command+designates+the+variable+to+tally+by%2C+and+the+ORDER+BY%0D%0A%23+DESC%28%29+command+sorts+the+results+by+descending+number.%0D%0AGROUP+BY+%3Ftype%0D%0AORDER+BY+DESC%28%3Fn%29&_implicit=false&_equivalent=false&_form=%2Fsparql) / [Edit query](http://collection.britishmuseum.org/sparql?sample=PREFIX+bmo%3A+%3Chttp%3A%2F%2Fcollection.britishmuseum.org%2Fid%2Fontology%2F%3E%0APREFIX+skos%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23%3E%0APREFIX+ecrm%3A+%3Chttp%3A%2F%2Ferlangen-crm.org%2Fcurrent%2F%3E%0APREFIX+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E%0ASELECT+%3Ftype+%28COUNT%28%3Ftype%29+as+%3Fn%29%0D%0AWHERE+%7B%0D%0A++%23+We+still+need+to+indicate+the+%3Fobject_type+variable%2C+however+we+will+not%0D%0A++%23+require+it+to+match+%22print%22+this+time%0D%0A%0D%0A++%3Fobject+bmo%3APX_object_type+%3Fobject_type+.%0D%0A++%3Fobject_type+skos%3AprefLabel+%3Ftype+.%0D%0A%0D%0A++%23+Once+again%2C+we+will+also+filter+by+date%0D%0A++%3Fobject+ecrm%3AP108i_was_produced_by+%3Fproduction+.%0D%0A++%3Fproduction+ecrm%3AP9_consists_of+%3Fdate_node+.%0D%0A++%3Fdate_node+ecrm%3AP4_has_time-span+%3Ftimespan+.%0D%0A++%3Ftimespan+ecrm%3AP82a_begin_of_the_begin+%3Fdate+.%0D%0A++FILTER%28%3Fdate+%3E%3D+%221580-01-01%22%5E%5Exsd%3Adate+%26%26+%3Fdate+%3C%3D+%221600-01-01%22%5E%5Exsd%3Adate%29%0D%0A%7D%0D%0A%23+The+GROUP+BY+command+designates+the+variable+to+tally+by%2C+and+the+ORDER+BY%0D%0A%23+DESC%28%29+command+sorts+the+results+by+descending+number.%0D%0AGROUP+BY+%3Ftype%0D%0AORDER+BY+DESC%28%3Fn%29)
+[Run query](https://collection.britishmuseum.org/sparql#query=PREFIX+bmo%3A+%3Chttp%3A%2F%2Fwww.researchspace.org%2Fontology%2F%3E%0APREFIX+skos%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23%3E%0APREFIX+ecrm%3A+%3Chttp%3A%2F%2Fwww.cidoc-crm.org%2Fcidoc-crm%2F%3E%0APREFIX+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E%0A%0ASELECT+%3Ftype+(COUNT(%3Ftype)+as+%3Fn)%0AWHERE+%7B%0A++%23+We+still+need+to+indicate+the+%3Fobject_type+variable%2C%0A++%23+however+we+will+not+require+it+to+match+%22print%22+this+time%0A%0A++%3Fobject+bmo%3APX_object_type+%3Fobject_type+.%0A++%3Fobject_type+skos%3AprefLabel+%3Ftype+.%0A%0A++%23+Once+again%2C+we+will+also+filter+by+date%0A++%3Fobject+ecrm%3AP108i_was_produced_by+%3Fproduction+.%0A++%3Fproduction+ecrm%3AP9_consists_of+%3Fdate_node+.%0A++%3Fdate_node+ecrm%3AP4_has_time-span+%3Ftimespan+.%0A++%3Ftimespan+ecrm%3AP82a_begin_of_the_begin+%3Fdate+.%0A++FILTER(%3Fdate+%3E%3D+%221580-01-01%22%5E%5Exsd%3Adate+%26%26%0A+++++++++%3Fdate+%3C%3D+%221600-01-01%22%5E%5Exsd%3Adate)%0A%7D%0A%23+The+GROUP+BY+command+designates+the+variable+to+tally+by%2C%0A%23+and+the+ORDER+BY+DESC()+command+sorts+the+results+by%0A%23+descending+number.%0AGROUP+BY+%3Ftype%0AORDER+BY+DESC(%3Fn))
 
 {% include figure.html filename="sparql09.png" caption="Counts of objects by type produced between 1580 and 1600." %}
 
@@ -571,7 +580,7 @@ button at the bottom of the screen to begin manipulating it. (See this
 lesson](/lessons/creating-network-diagrams-from-historical-sources.html#visualize-network-data-in-palladio)
 for a more in-depth tutorial on Palladio.) For example, we might make a [query
 that returns links to the images of prints made between 1580 and
-1600](http://collection.britishmuseum.org/sparql?sample=%23+Return+object+links+and+creation+date%0D%0APREFIX+bmo%3A+%3Chttp%3A%2F%2Fcollection.britishmuseum.org%2Fid%2Fontology%2F%3E%0D%0APREFIX+skos%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23%3E%0D%0APREFIX+ecrm%3A+%3Chttp%3A%2F%2Ferlangen-crm.org%2Fcurrent%2F%3E%0D%0APREFIX+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E%0D%0ASELECT+DISTINCT+%3Fobject+%3Fdate+%3Fimage%0D%0AWHERE+%7B%0D%0A%0D%0A++%23+We%27ll+use+our+previous+command+to+search+only+for+objects+of+type+%22print%22%0D%0A++%3Fobject+bmo%3APX_object_type+%3Fobject_type+.%0D%0A++%3Fobject_type+skos%3AprefLabel+%22print%22+.%0D%0A%0D%0A++%23+We+need+to+link+though+several+nodes+to+find+the+creation+date+associated%0D%0A++%23+with+an+object%0D%0A++%3Fobject+ecrm%3AP108i_was_produced_by+%3Fproduction+.%0D%0A++%3Fproduction+ecrm%3AP9_consists_of+%3Fdate_node+.%0D%0A++%3Fdate_node+ecrm%3AP4_has_time-span+%3Ftimespan+.%0D%0A++%3Ftimespan+ecrm%3AP82a_begin_of_the_begin+%3Fdate+.%0D%0A%0D%0A++%23+Yes%2C+we+need+to+connect+quite+a+few+dots+to+get+to+the+date+node%21+Now+that%0D%0A++%23+we+have+it%2C+we+can+filter+our+results.+Because+we+are+filtering+a+date%2C+we%0D%0A++%23+must+attach+the+xsd%3Adate+tag+to+our+date+strings+so+that+SPARQL+knows+how+to%0D%0A++%23+parse+them.%0D%0A%0D%0A++FILTER%28%3Fdate+%3E%3D+%221580-01-01%22%5E%5Exsd%3Adate+%26%26+%3Fdate+%3C%3D+%221600-01-01%22%5E%5Exsd%3Adate%29%0D%0A++%0D%0A++%3Fobject+bmo%3APX_has_main_representation+%3Fimage+.%0D%0A%7D%0D%0ALIMIT+100),
+1600](https://collection.britishmuseum.org/sparql?query=%23+Return+object+links+and+creation+date%0D%0APREFIX+bmo%3A+%3Chttp%3A%2F%2Fcollection.britishmuseum.org%2Fid%2Fontology%2F%3E%0D%0APREFIX+skos%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23%3E%0D%0APREFIX+ecrm%3A+%3Chttp%3A%2F%2Ferlangen-crm.org%2Fcurrent%2F%3E%0D%0APREFIX+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E%0D%0ASELECT+DISTINCT+%3Fobject+%3Fdate+%3Fimage%0D%0AWHERE+%7B%0D%0A%0D%0A++%23+We%27ll+use+our+previous+command+to+search+only+for+objects+of+type+%22print%22%0D%0A++%3Fobject+bmo%3APX_object_type+%3Fobject_type+.%0D%0A++%3Fobject_type+skos%3AprefLabel+%22print%22+.%0D%0A%0D%0A++%23+We+need+to+link+though+several+nodes+to+find+the+creation+date+associated%0D%0A++%23+with+an+object%0D%0A++%3Fobject+ecrm%3AP108i_was_produced_by+%3Fproduction+.%0D%0A++%3Fproduction+ecrm%3AP9_consists_of+%3Fdate_node+.%0D%0A++%3Fdate_node+ecrm%3AP4_has_time-span+%3Ftimespan+.%0D%0A++%3Ftimespan+ecrm%3AP82a_begin_of_the_begin+%3Fdate+.%0D%0A%0D%0A++%23+Yes%2C+we+need+to+connect+quite+a+few+dots+to+get+to+the+date+node%21+Now+that%0D%0A++%23+we+have+it%2C+we+can+filter+our+results.+Because+we+are+filtering+a+date%2C+we%0D%0A++%23+must+attach+the+xsd%3Adate+tag+to+our+date+strings+so+that+SPARQL+knows+how+to%0D%0A++%23+parse+them.%0D%0A%0D%0A++FILTER%28%3Fdate+%3E%3D+%221580-01-01%22%5E%5Exsd%3Adate+%26%26+%3Fdate+%3C%3D+%221600-01-01%22%5E%5Exsd%3Adate%29%0D%0A++%0D%0A++%3Fobject+bmo%3APX_has_main_representation+%3Fimage+.%0D%0A%7D%0D%0ALIMIT+100#query=%23+Return+object+links+and+creation+date%0APREFIX+bmo%3A+%3Chttp%3A%2F%2Fwww.researchspace.org%2Fontology%2F%3E%0APREFIX+skos%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23%3E%0APREFIX+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E%0APREFIX+ecrm%3A+%3Chttp%3A%2F%2Fwww.cidoc-crm.org%2Fcidoc-crm%2F%3E%0ASELECT+DISTINCT+%3Fobject+%3Fdate+%3Fimage%0AWHERE+%7B%0A++%0A++%23+We'll+use+our+previous+command+to+search+only+for+objects+of+type+%22print%22%0A++%3Fobject+bmo%3APX_object_type+%3Fobject_type+.%0A++%3Fobject_type+skos%3AprefLabel+%22print%22+.%0A%0A++%23+We+need+to+link+though+several+nodes+to+find+the+creation+date+associated%0A++%23+with+an+object%0A++%3Fobject+ecrm%3AP108i_was_produced_by+%3Fproduction+.%0A++%3Fproduction+ecrm%3AP9_consists_of+%3Fdate_node+.%0A++%3Fdate_node+ecrm%3AP4_has_time-span+%3Ftimespan+.%0A++%3Ftimespan+ecrm%3AP82a_begin_of_the_begin+%3Fdate+.%0A%0A++%0A++%23+Yes%2C+we+need+to+connect+quite+a+few+dots+to+get+to+the+date+node!+Now+that%0A++%23+we+have+it%2C+we+can+filter+our+results.+Because+we+are+filtering+a+date%2C+we%0A++%23+must+attach+the+xsd%3Adate+tag+to+our+date+strings+so+that+SPARQL+knows+how+to%0A++%23+parse+them.%0A%0A++FILTER(%3Fdate+%3E%3D+%221580-01-01%22%5E%5Exsd%3Adate+%26%26+%3Fdate+%3C%3D+%221600-01-01%22%5E%5Exsd%3Adate)%0A++%0A++%3Fobject+bmo%3APX_has_main_representation+%3Fimage+.%0A%7D%0ALIMIT+100),
 and render that data as a grid of images sorted by date:
 
 {% include figure.html filename="sparql11.png" caption="A gallery of images with a timeline of their creation dates generated using Palladio." %}

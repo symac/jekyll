@@ -16,6 +16,7 @@ abstract: "This lesson introduces Uniform Resource Locators (URLs) and explains 
 next: manipulating-strings-in-python
 previous: code-reuse-and-modularity
 categories: [lessons, python, original-ph]
+python_warning: true
 ---
 
 {% include toc.html %}

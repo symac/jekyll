@@ -15,6 +15,7 @@ topics: [python]
 abstract: "Counting the frequency of specific words in a list can provide illustrative data. This lesson will teach you Python's easy way to count such frequencies."
 next: creating-and-viewing-html-files-with-python
 previous: normalizing-data
+python_warning: true
 ---
 
 {% include toc.html %}

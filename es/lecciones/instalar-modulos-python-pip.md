@@ -3,12 +3,13 @@ title: Instalar módulos de Python con pip
 authors:
 - Fred Gibbs
 date: 2013-05-06
+translation_date: 2017-04-20
 reviewers:
 - Ben Hurwitz
 - Amanda Morton
 translator:
 - Víctor Gayol
-editor:
+translation-editor:
 - Antonio Rojas Castro
 translation-reviewer:
 - José Calvo Tello
@@ -19,6 +20,8 @@ difficulty: 1
 activity: acquiring
 topics: [get-ready, python]
 abstract: "Hay muchas maneras de instalar módulos externos; este tutorial explica uno de los métodos más comunes utilizando un programa llamado pip."
+exclude_from_check:
+- editors
 ---
 
 {% include toc.html %}

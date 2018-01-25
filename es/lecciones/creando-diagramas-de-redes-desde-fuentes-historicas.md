@@ -1,15 +1,17 @@
 ---
-title: "De la hermeneútica a las redes de datos: Extracción de datos y visualización de redes en fuentes históricas"
+title: "De la hermenéutica a las redes de datos: Extracción de datos y visualización de redes en fuentes históricas"
 authors:
 - Marten Düring
 date: 2015-02-18
+translation_date: 2017-04-26
 reviewers:
-- Fred Gibbs
 - Ryan Cordell
 - Justin Larsen
 translator:
 - Maria José Afanador-Llach
-editor:
+editors:
+- Fred Gibbs
+translation-editor:
 - Víctor Gayol
 translation-reviewer:
 - José Antonio Motilla Chávez
@@ -43,7 +45,7 @@ Esta lección no reemplaza ninguno de los muchos manuales genéricos de análisi
 
 Este tutorial se enfoca en la extracción de datos de un texto desestrucurado y muestra una forma de visulizarlos utilizando Palladio. Está diseñado a propósito para ser lo más simple y robusto posible. Por el alcance limitado de este tutorial, es suficiente decir que un actor se refiere a las personas, instituciones, etcétera., que son el objeto de estudio y que están conectadas por relaciones. Dentro del contexto del Análisis de Redes Sociales (ARS) (también llamada gráfica o grafo de red), a los actores o puntos centrales en cuestión, les llamamos nodos, y a las conexiones que existen entre ellos, les llamamos lazos o vínculos. En todos los casos es importante recordar que los nodos y los lazos son modelos drásticamente simplificados utilizados para representar la complejidad de eventos pasados y en sí mismos muchas veces no son suficientes para generar conocimiento. Pero es posible que el gráfico resalte algunos aspectos interesantes, desafíe tu hipótesis, y/o te lleve a generar nuevas hipótesis. *Los digramas de redes se vuelven más significativos cuando son parte de un diálogo con datos y otras fuentes de información*.
 
-Muchos proyectos de análisis de redes en las ciencias sociales se basan en fuentes de datos preexistentes, o datos que fueron creados con el propósito de ser usados para análisis de redes. Algunos ejemplos incluyen registros de correo electrónico, cuestionarios, o relaciones comerciales los cuales hacen relativamente fácil identificar quién está conectado con quien y cómo. Es considerablemente más difícil extraer datos de redes de textos no estructurados. Esto nos fuerza a casar las complejidades de la hermenuética con el rigor del análisis formal de datos. El término "amigo" puede servir como un ejemplo: dependiendo del contexto puede significar cualquier cosa desde un insulto a una expresión de amor. El contexto del conocimiento y el análisis del texto puede ayudar a identificar lo que significa en cualquier caso dado. Un sistema formal de categorías debería representar los diferentes signficados con tantos detalles como sean necesario para tus propósitos.        
+Muchos proyectos de análisis de redes en las ciencias sociales se basan en fuentes de datos preexistentes, o datos que fueron creados con el propósito de ser usados para análisis de redes. Algunos ejemplos incluyen registros de correo electrónico, cuestionarios, o relaciones comerciales los cuales hacen relativamente fácil identificar quién está conectado con quien y cómo. Es considerablemente más difícil extraer datos de redes de textos no estructurados. Esto nos fuerza a casar las complejidades de la hermenéutica con el rigor del análisis formal de datos. El término "amigo" puede servir como un ejemplo: dependiendo del contexto puede significar cualquier cosa desde un insulto a una expresión de amor. El contexto del conocimiento y el análisis del texto puede ayudar a identificar lo que significa en cualquier caso dado. Un sistema formal de categorías debería representar los diferentes signficados con tantos detalles como sean necesario para tus propósitos.        
 
 En otras palabras, el reto es sistematizar la interpretación textual. Las redes que se crean desde conjuntos de datos preexistentes necesitan considerarse dentro del contexto en el cual fueron creados (e.g. la terminología de las preguntas en un cuestionario y los grupos de destinatarios). Las redes creadas desde texto no estructurado presentan retos adicionales: las interpretaciones son sumamente individuales, y dependen de los puntos de vista y conocimiento del contexto).  
 
@@ -132,7 +134,7 @@ Una vez hayas creado tu esquema de codificación y hayas codificado tus fuentes,
 
 Todos los editores de hojas de cálculo permiten exportar tablas como .csv (valores separados por comas) o como archivos .txt . Estos archivos pueden ser importados a todas las herramientas de visualización de redes comunmente utilizados (ver lista al final del tutorial). Para tus primeros pasos yo sugiero que pruebes Palladio, una herramienta de fácil uso para visualización de datos que se encuentra en desarrollo activo por parte de la Universidad de Stanford. Palladio corre en navegadores y trabaja independiente de plataforma. Ten en cuenta que aunque Palladio es muy versátil, está diseñada más para visualizaciones rápidas que para análisis de redes sofisticado.
 
-Los siguientes pasos explican cómo visualizar datos en red en Palladio, pero también recomiendo que revises sus propios materiales de inducción y explores sus datos de muestra. Acá, sin embargo, utilizo un [*conjunto de datos ligeramente modificado con base en el esquema de codificación*](https://docs.google.com/spreadsheets/d/1j5OuQMv9UGQOl7xJ1cECGLN4sUKcTdxXV7ocr-08rBk/edit?usp=sharing) presentado antes (también lo puedes bajar y utilizarlo para explorar otras herramientas).
+Los siguientes pasos explican cómo visualizar datos en red en Palladio, pero también recomiendo que revises sus propios materiales de inducción y explores sus datos de muestra. Acá, sin embargo, utilizo un [*conjunto de datos ligeramente modificado con base en el esquema de codificación*](https://docs.google.com/spreadsheets/d/1Y9xCnu0ignRYIPi5kqouJ2vRtVMBnMeLW2ka4-p4Q8I/edit?usp=sharing) presentado antes (también lo puedes bajar y utilizarlo para explorar otras herramientas).
 
 Paso a paso:
 

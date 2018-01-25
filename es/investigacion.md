@@ -5,7 +5,7 @@ layout: blank
 
 ## Producción académica sobre el proyecto
 
-El equipo del proyecto y los miembros de la comunidad en general están involucrados en una serie de iniciativas académicas relacionadas con nuestro trabajo aquí en *The Programming Historian*. Estas iniciativas incluyen eventos, artículos en revistas académicas, reseñas (de nosotros por la comunidad) y carteles. Si tú estás desarrollando una investigación académica usando los materiales de este proyecto, háznoslo saber.
+El equipo del proyecto y los miembros de la comunidad en general están involucrados en una serie de iniciativas académicas relacionadas con nuestro trabajo aquí en *The Programming Historian*. Estas iniciativas incluyen eventos, artículos en revistas académicas, reseñas (de nosotros por la comunidad) y carteles. Si tú estás desarrollando una investigación académica usando los materiales de este proyecto, por favor contacta con nuestra Jefa de redacción [Jessica Parr](mailto:jparr1129@gmail.com).
 
 ### Reseñas
 
@@ -23,6 +23,7 @@ El equipo del proyecto y los miembros de la comunidad en general están involucr
 
 ### Talleres y eventos
 
+* Victor Gayol, 'Introducción a las Ciencias Sociales y Humanidades Digitales. The Programming Historian en español – COLMICH', El Colegio de Michoacán (septiembre 2017)
 * Fred Gibbs, 'Digital History @UM: The Programming Historian', University of Michigan (27 de enero, 2017).
 * Adam Crymble, 'Enhancing Digital Skills Applied to History', North-West University, Vanderbijlpark, South Africa (20-22 de junio, 2016). 
 * Adam Crymble and Justin Colson, 'Intro to Geocoding', Institute of Historical Research, London, (19 de abril, 2016).

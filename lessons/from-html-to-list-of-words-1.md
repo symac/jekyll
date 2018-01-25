@@ -16,6 +16,7 @@ abstract: "In this two-part lesson, we will build on what you’ve learned about
 indexed, and counted."
 next: from-html-to-list-of-words-2
 previous: manipulating-strings-in-python
+python_warning: true
 ---
 
 {% include toc.html %}

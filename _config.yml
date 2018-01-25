@@ -1,6 +1,6 @@
 name: Programming Historian
 description: Introductory and intermediate programming lessons for humanists
-url: http://programminghistorian.org
+url: https://programminghistorian.org
 baseurl: ""
 permalink: :categories/:title
 exclude:
@@ -11,7 +11,7 @@ exclude:
 highlighter: rouge
 markdown: kramdown
 permalink: :categories/:title
-gems:
+plugins:
   - jekyll-redirect-from
 whitelist:
   - jekyll-redirect-from

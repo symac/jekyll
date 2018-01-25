@@ -4,12 +4,16 @@ authors:
 - William J. Turkel
 - Adam Crymble
 date: 2012-07-17
-reviewers:
+translation_date: 2017-03-15
+editors:
 - Miriam Posner
+reviewers:
 - Jim Clifford
 - Francesca Benatti
 translator:
 - Víctor Gayol
+translation-editor:
+- Adam Crymble
 translation-reviewer:
 - Jairo A. Melo
 - Maria José Afanador-Llach
@@ -18,6 +22,7 @@ layout: lesson
 next: contar-frecuencias
 previous: de-html-a-lista-de-palabras-2
 redirect_from: /es/lessons/normalizing-data
+python_warning: true
 difficulty: 2
 activity: transforming
 topics: [python]

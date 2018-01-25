@@ -1,6 +1,7 @@
 ---
 title: Author Guidelines
 layout: blank
+redirect_from: /new-lesson-workflow
 ---
 
 # Author Guidelines
@@ -11,10 +12,10 @@ layout: blank
 <h2 class="noclear">Step 3: <a href="#submitting-a-new-lesson">Submitting a New Lesson</a></h2>
 
 ## Proposing a New Lesson
-If you have an idea for a new lesson, or have already written a tutorial that you think could be adapted for the *Programming Historian*, contact [Jeri Wieringa] to discuss your idea. Getting in touch at an early stage will help you frame your lesson--especially identifying a target audience and expected skill level--and to pair you with the most appropriate editor.
+If you have an idea for a new lesson, or have already written a tutorial that you think could be adapted for the *Programming Historian*, contact [Jessica Parr] to discuss your idea. Getting in touch at an early stage will help you frame your lesson--especially identifying a target audience and expected skill level--and to pair you with the most appropriate editor.
 
 <div class="alert alert-success">
-  There is no standard lesson at <i>Programming Historian</i>. We welcome lessons on any topic that helps humanists at any phase of the research and publication process.
+  There is no standard lesson at the <i>Programming Historian</i>. We welcome lessons on any topic that helps humanists at any phase of the research and publication process.
 </div>
 
 We welcome all lesson proposals, pitched at any level of technical aptitude and experience, from neophytes to power users. Lessons may be a short and straightforward explanation of a discrete task (such "helper" lessons make complex lessons easier to follow); they may be quite long, complex, and technically sophisticated.
@@ -25,7 +26,7 @@ Once your proposal is accepted, an editor will create a "Proposal" ticket in our
 
 
 ## Writing a New Lesson
-*Programming Historian* is hosted at [GitHub](http://github.com), which is a free platform for maintaining files and their revision history. It's most often used to store files of programming code, but it's also a fabulous way to maintain an open-access resource like *Programming Historian*. More specifically, our site uses [GitHub Pages] to take a bunch of plain text files and turn them into a spiffy website.
+The *Programming Historian* is hosted at [GitHub](http://github.com), which is a free platform for maintaining files and their revision history. It's most often used to store files of programming code, but it's also a fabulous way to maintain an open-access resource like the *Programming Historian*. More specifically, our site uses [GitHub Pages] to take a bunch of plain text files and turn them into a spiffy website.
 
 This means that we we ask that authors adhere to the following lesson requirements, which are not merely stylistic, but in fact necessary for our publishing platform. While our technical requirements may be unfamiliar to you, **we are here to help you through the process and learn the technologies as you go.**
 
@@ -33,7 +34,7 @@ Please note that as a volunteer-driven project, we are grateful for your attenti
 
 
 ### Use plain text
-Because our site is hosted using [GitHub Pages](https://pages.github.com), **your lesson must be written in plain text**, using a text editor of your choice. *Text editors are distinctly different from traditional word processing programs like MS Word.* We highly recommend using [Atom], which is available for Mac or Windows. Mac users might consider [TextWrangler] or TextEdit (which comes with Mac OS X). Windows users might consider [Notepad++].
+Because our site is hosted using [GitHub Pages](https://pages.github.com), **your lesson must be written in plain text**, using a text editor of your choice. *Text editors are distinctly different from traditional word processing programs like MS Word.* We highly recommend using [Atom](https://atom.io/), which is available for Mac or Windows. Mac users might consider [TextWrangler] or TextEdit (which comes with Mac OS X). Windows users might consider [Notepad++].
 
 The specific editor you choose is not important, but you should begin writing your lesson in plain text to avoid frustrations later on. For instance, stylized quotation marks automatically inserted by MS Word create formatting problems that can be hard to debug.
 
@@ -246,7 +247,7 @@ Then, *Programming Historian*'s editorial team will quickly review your lesson a
 Congratulations! You've published a lesson at *Programming Historian*!
 
 
-  [Jeri Wieringa]: mailto:jeri.elizabeth+proghist@gmail.com
+  [Jessica Parr]: mailto:jparr1129@gmail.com
   [Lesson Pipeline wiki page]: https://github.com/programminghistorian/jekyll/wiki/Lesson-Pipeline
   [reviewer guidelines]: /reviewer-guidelines.html
   [published lessons]: lessons
@@ -258,7 +259,7 @@ Congratulations! You've published a lesson at *Programming Historian*!
   [GitHub Guide to Markdown]: https://guides.github.com/features/mastering-markdown/
   [Markdown Basics]: https://help.github.com/articles/markdown-basics
   [Github Flavored Markdown]: https://help.github.com/articles/github-flavored-markdown
-  [the raw text on GitHub]: https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/new-lesson-workflow.md
+  [the raw text on GitHub]: https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/author-guidelines.md
   [elements provided by HTML5]: http://html5doctor.com/the-figure-figcaption-elements/
   [example of the preview with figures here]: https://github.com/programminghistorian/jekyll/commit/476f6d466d7dc4c36048954d2e1f309a597a4b87#diff-f61eee270fe5a122a0163ebf0e2f8725L28
   [live version here]: http://programminghistorian.org/lessons/automated-downloading-with-wget#lesson-goals

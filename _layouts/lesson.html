@@ -28,7 +28,7 @@ layout: base
 
       <div class="col-md-8">
         <div class="header-title">
-          <h1><a href="{{ site.url }}{{ page.url }}">{{ page.title }}</a></h1>
+          <h1><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h1>
         </div>
 
         <div class="header-author">
@@ -73,7 +73,7 @@ layout: base
       </div>
 
       {% if page.translator %}
-      <div class="col-md-3" >
+      <div class="col-md-2" >
         <h3 class="text-left">{{site.data.snippets.translator[page.lang]}}</h3>
         <ul>
         {% for translator in page.translator %}
@@ -83,8 +83,19 @@ layout: base
       </div>
       {% endif %}
 
+      {% if page.translation-editor %}
+      <div class="col-md-2" >
+        <h3 class="text-left">{{site.data.snippets.translation-editors[page.lang]}}</h3>
+        <ul>
+        {% for translation-editor in page.translation-editor %}
+          <li>{{translation-editor}}</li>
+        {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
       {% if page.translation-reviewer %}
-      <div class="col-md-3" >
+      <div class="col-md-2" >
         <h3 class="text-left">{{site.data.snippets.translation-reviewers[page.lang]}}</h3>
         <ul>
         {% for editor in page.translation-reviewer %}
@@ -114,7 +125,7 @@ layout: base
 
     {% if page.redirect_from and page.lang == 'es' %}
       <div class="alert alert-warning">
-        Esta lección fue publicada originalmente en Inglés. Es posible que desee consulte <a href="/lessons/{{slug}}">el original</a>.
+        Esta lección fue publicada originalmente en Inglés. Es posible que desee consultar <a href="/lessons/{{slug}}">el original</a>.
       </div>
     {% endif %}
 
@@ -123,6 +134,13 @@ layout: base
        {{ site.data.snippets.deprecated[page.lang] }}
      </div>
     {% endif %}
+
+    {% if page.python_warning %}
+    <div class="alert alert-warning">
+      {{ site.data.snippets.python-warning[page.lang] | markdownify }}
+    </div>
+    {% endif %}
+
 
       {% if page.previous %}
       <div class="series-warning alert alert-info">
@@ -136,7 +154,7 @@ layout: base
 
      {% if page.next %}
       <div class="series-warning alert alert-info">
-        {{ site.data.snippets.series-next-note[page.lang] }} <a href="{{page.previous}}">{{ site.data.snippets.next-lesson[page.lang] }} </a>.
+        {{ site.data.snippets.series-next-note[page.lang] }} <a href="{{page.next}}">{{ site.data.snippets.next-lesson[page.lang] }} </a>.
       </div>
      {% endif %}
 

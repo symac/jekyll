@@ -56,7 +56,20 @@ The *Programming Historian* uses a model of open peer review, while we believe t
 
 Before soliciting external reviews, the editor should read and try the tutorial and use their experience with the *Programming Historian* to help the author make initial improvements (if required). Often editors need help clarifying the intended audience of a lesson, or identifying jargon that needs further explanation. This initial review helps let the external reviewers focus on improving the piece. This is normally done openly on our submission system (see below), but it can be a closed review at the request of either party.
 
-Once an author has revised the tutorial to the satisfaction of the editor, it is the editor's job to invite two formal external peer reviews. It is entirely up to the editor who these reviewers are, however in the interest of our [commitment to diversity](https://github.com/programminghistorian/jekyll/issues), we encourage editors to ask themselves if they have made a sufficient effort to draw from reviewers who are distinct from themselves either by gender, nationality, race, age, or academic background. Please try not to find two people who are very like you.
+Once an author has revised the tutorial to the satisfaction of the editor, it is the editor's job to invite two formal external peer reviews. It is entirely up to the editor who these reviewers are, however in the interest of our [commitment to diversity](https://github.com/programminghistorian/jekyll/issues), we encourage editors to ask themselves if they have made a sufficient effort to draw from reviewers who are distinct from themselves either by gender, nationality, race, age, or academic background. Please try not to find two people who are very like you. 
+
+To coordinate our requests for reviewers, please use the "Programming Historian - Reviewer Tracking" Google Spreadsheet. (Contact the managing editor or Jeri Wieringa if you need help accessing the spreadsheet.) Prior to sending a review request, check the list to make sure that the person has not been recently contacted by another editor. To avoid over-taxing reviewers, please limit requests to once a year. If a reviewer has been contacted in the past year, the "date_contacted" field will display as red.
+
+For each potential reviewer you do contact, regardless of response, please enter: 
+
++ the date contacted, 
++ the reviewer's name, 
++ your name as the editor, 
++ the lesson to be reviewed,
++ the response,
++ and, if the response was "yes," the date completed. 
+
+Please enter the date using the `mm/dd/yyyy` format.
 
 When inviting reviewers, the editor should provide them with our [reviewer guidelines](/reviewer-guidelines) and give them a deadline for completing their review (usually one month) so that we can ensure the timely publication of the tutorial.
 
@@ -126,7 +139,7 @@ You can quickly check that everything looks correct on a lesson submission by lo
 
 `http://programminghistorian.github.io/ph-submissions/lessons/FILENAME-HERE`  (note - no .md at the end)
 
-If that doesn't work, check to see if there's a problem that's keeping the site from building by going to [the settings tab](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/ISSUE_TEMPLATE.md) on the repo page, and looking under GitHub Pages. If there's a problem, then instead of saying the site is published in green, it will contain a notice that the site is having trouble building. If that happens, let Caleb McDaniel know, and he will try to diagnose it.
+If that doesn't work, let Matthew Lincoln know, and he will try to diagnose it.
 
 ### C) Verify Images
 
@@ -160,7 +173,7 @@ Once you and the author are happy with a tutorial, the next step is to move the 
 
 ### 1) Move the Files
 
-The easiest way to publish the lesson is to use `git` from the command line. The following instructions assume that you have already cloned both the `jekyll` and `ph-submissions` repositories to your local machine. (Our [lesson on using GitHub Desktop](/lessons/getting-started-with-github-desktop) may be helpful if this is new to you.) If you are not sure how to do that or have any questions, contact Caleb McDaniel for assistance.
+The easiest way to publish the lesson is to use `git` from the command line. The following instructions assume that you have already cloned both the `jekyll` and `ph-submissions` repositories to your local machine. (Our [lesson on using GitHub Desktop](/lessons/getting-started-with-github-desktop) may be helpful if this is new to you.) If you are not sure how to do that or have any questions, contact Matthew Lincoln for assistance.
 
 1. Go to the directory for your local `ph-submissions` repository.
 2. `git pull` to get all of the newest changes on your machine (or `sync` if you are using GitHub Desktop)
@@ -178,22 +191,31 @@ After the lesson has been moved to the `jekyll` repository, you'll also need to 
 
 ### 2) Create an Author Bio
 
-If the lesson has been written by a new author, editors should add information about the author to the site's [authors directory](https://github.com/programminghistorian/jekyll/blob/gh-pages/_data/authors.yml). Follow the syntax for the examples already included there:
+If the lesson has been written by a new author, editors should add information about the author to the site's [authors directory](https://github.com/programminghistorian/jekyll/blob/gh-pages/_data/ph_authors.yml). Follow the syntax for the examples already included there:
 
 ```yaml
 - name: Jim Clifford
-  bio: |
-       Jim Clifford is an assistant professor in the Department of History
-       at the University of Saskatchewan.
+  bio:
+      en: |
+          Jim Clifford is an assistant professor in the Department of History
+          at the University of Saskatchewan.
 ```
 
 **Whitespace is important**, so be sure that the indentation matches the other examples.
 
-### 3) Add reviewers and editors to the YAML file
+### 3) Add a table of contents to the lesson
+
+The following code should be added into the text of the lesson, usually before the first subheader:
+
+```
+{% raw %}{% include toc.html %}{% endraw %}
+```
+
+### 4) Add reviewers and editors to the YAML file
 
 It is important that we acknowledge the work of our peer reviewers and editors. To the YAML file at the top of the tutorial, add the names of the reviewers who helped work on the piece as well as the names of any members of the community who contributed substantial open reviews. In addition, create an `editors` key and add yourself and any other editors who actively contributed to guiding the piece to publication. YAML formatting instructions can be found in the [Author Guidelines](/author-guidelines).
 
-### 4) Add a difficulty indicator to the YAML file
+### 5) Add a difficulty indicator to the YAML file
 
 To help readers evaluate which lessons best fit their goals and skill level, we provide "Recommended for ___ Users" information in the lesson YAML file. There are currently three tiers, which can be set with the following numerical codes: 1 (Beginning), 2 (Intermediate), 3 (Advanced). To add the difficulty level to the lesson, include the following in the YAML file:
 
@@ -201,15 +223,15 @@ To help readers evaluate which lessons best fit their goals and skill level, we 
 difficulty: 1
 ```
 
-### 5) Add the review ticket number to the YAML file
+### 6) Add the review ticket number to the YAML file
 
 In order to promote transparency around the review process, create a `review-ticket` key in the YAML file and provide the ticket number for the corresponding review ticket in the ph-submissions repository. This information will be used to provide a link back to the review ticket for the lesson.
 
-### 6) Update the date field in the YAML file
+### 7) Update the date field in the YAML file
 
 Update the date in the YAML file to the date the lesson was moved to the jekyll repository and the added to the main site.
 
-### 7) Other lesson YAML finalization
+### 8) Other lesson YAML finalization
 Looking at the example below, make sure all front matter on the lesson is properly filled out.  Common fields that need writing or editing at this point are:
 - **collection** should just say "collection: lessons"
 - **layout** should just say "layout: lesson"
@@ -243,7 +265,7 @@ Check out the example below to see what finished front matter should look like:
     abstract: "In this lesson you will first learn what topic modeling is and why you might want to employ it in your research. You will then learn how to install and work with the MALLET natural language processing toolkit to do so."
     ---
 
-### 8) Find an Image to represent the lesson
+### 9) Find an Image to represent the lesson
 
 We represent our lessons using an old image that we feel captures some element of the task described in the tutorial. You can see the full range of these on the [main Lessons directory](/lessons/). These images are selected by editors.
 
@@ -262,10 +284,7 @@ Then, create a new copy of the image. Crop it to a square without removing any i
 
 Upload the original image to the [gallery/originals](https://github.com/programminghistorian/jekyll/tree/gh-pages/gallery/originals) folder, and upload the edited image to the [gallery](https://github.com/programminghistorian/jekyll/tree/gh-pages/gallery) folder.
 
-Add the image to the lessons page by editing the HTML in [lessons/index.md](https://github.com/programminghistorian/jekyll/blob/gh-pages/lessons/index.md) so that the image source matches the new image’s file location. In our previous example, the HTML line would be: `<img src="/gallery/cleaning-data-with-openrefine.png">`. The new image should appear on the [Lessons page]( http://programminghistorian.org/lessons)!
-
-
-### 9) Incorporate your lesson into our Twitter bot
+### 10) Incorporate your lesson into our Twitter bot
 In addition to the Twitter promotion outlined below, we also make use of a Twitter bot to regularly re-advertise older lessons. In order to add the new lesson to our pipeline, you need to add it as a row in [this spreadsheet](https://docs.google.com/spreadsheets/d/1o-C-3WwfcEYWipIFb112tkuM-XOI8pVVpA9_sag9Ph8/edit#gid=1625380994). Everyone on the editorial team should have the ability to make changes; email the google group if you have trouble. You will need to add a new row for your lesson to the end of the table with the following fields:
 
 * message_one (column A) - a twitter message to play early in the week.
@@ -274,8 +293,44 @@ In addition to the Twitter promotion outlined below, we also make use of a Twitt
 
 Leave column D blank and untouched - this field is used by the Twitter bot to log its progress through the list. Also note that this step should not replace your own promotion of the lesson. The bot goes through the lessons at random, one a week, so it could be months until your lesson comes up through this means.
 
+### 11) Confirm all links and YAML headers are functioning correctly
 
-### 10) Thank Everyone and Encourage Promotion
+Once you push your changes on to the `gh-pages` branch of the [programminghistorian][ph_repo] repository, the site will be automatically tested by [Travis CI] ([Continuous Integration]).
+This test process checks two things: first, that all YAML and markdown code is parseable, and second, that all the hyperlinks on the site point to valid, operational pages.
+
+[ph_repo]: https://github.com/programminghistorian/jekyll
+
+[Travis CI]: https://travis-ci.org
+
+[Continuous Integration]: https://www.thoughtworks.com/continuous-integration
+
+We run these builds primarily to check that URLs that _once_ were functional are _still_ functional, as often times external web pages are moved to new addresses, or are no longer live.
+They are also an excellent way to catch small typos that may have evaded authors, editors, and reviewers.
+The status of these tests (often called a "Build Status" on Travis CI and on GitHub) can be seen by navigating to the [programminghistorian repository page][ph_repo], and clicking "Commits" on the upper left side of the code menu.
+
+![GitHub commit menu location](images/editor-guidelines/gh_commits_location_screen.png)
+
+This will show you the list of every change made to the main repository, along with a status icon:
+
+- Green check mark: you're good to go! All the links on the page were checked and found valid. [**You may skip the rest of this section.**](#11-thank-everyone-and-encourage-promotion)
+- Yellow circle: your latest commit is still building. Wait 1-2 minutes and then check back.
+- Red X: there was an error in the build.
+
+If your build has errored, you will need to consult the build logs to see what is causing it.
+
+1. Click on the red X for the most recent commit (the one nearest the top of the page), and click on the "Details" link.
+![Travis details location](/images/editor-guidelines/commit_list_screen.png)
+2. This will bring you to the build log page on Travis CI. Build logs are usually several hundred lines long, but the error information we are looking for will be at the bottom. Click on the small gray circle at the upper right of the log display to scroll to the bottom.
+![The top of the Travis CI build screen](/images/editor-guidelines/travis_top_screen.png)
+3. You may see two types of errors: first, if a page is missing a required YAML field (e.g. if a lesson does not have an `editors` field) then this will be marked in red. Failing links will be also be listed in red, grouped by the page they appeared in. If any links in your new lesson are causing errors, go back and double check that they do not have any typos. If they do, then make any necessary corrections and commit the changes to the repository, and wait for Travis CI to run its tests again.
+![Locating error details in Travis CI build results](/images/editor-guidelines/travis_bottom_screen.png)
+
+- There are some rare circumstances in which a link will be failed by Travis CI, but will work perfectly fine when you navigate to it in your own Internet browser. If this occurs, [create a new issue] so that one of the members of the technical team can review the problem and find a workaround.
+- As part of its normal operations, Travis CI will occasionally go back and re-check old links across this entire site, including old lessons. Therefore, you may see an error being caused not by your lesson, but by another page. If you can see how to immediately fix those errors on other pages, please do so, and then wait for the build to re-run. If you do not have the time to track down those other broken links, first ensure that there are no error links coming from your new lesson, and then [create a new issue] so that someone else on the technical team can review the problem.
+
+[create a new issue]: https://github.com/programminghistorian/jekyll/issues/new
+
+### 12) Thank Everyone and Encourage Promotion
 It's important to send an email or message to everyone involved thanking them for their efforts. In particular, thank the author for contributing and encourage them to think of us again in future. It's also worth giving the author some ideas on promoting their lesson. The most-used lessons always have authors' energies behind them. For example authors should be encouraged to:
 
 - Tweet at least 3 times about their lesson (with a link).
@@ -285,3 +340,5 @@ It's important to send an email or message to everyone involved thanking them fo
 - Add it to lists of resources in relevant repositories (eg, Wikipedia, community groups, etc).
 
 People don't find lessons on their own. The hard work is done, so let's make sure it was worth it!
+
+

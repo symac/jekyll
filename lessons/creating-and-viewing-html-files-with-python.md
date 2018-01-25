@@ -16,6 +16,7 @@ abstract: "Here you will learn how to create HTML files with Python scripts, and
 how to use Python to automatically open an HTML file in Firefox."
 next: output-data-as-html-file
 previous: counting-frequencies
+python_warning: true
 ---
 
 {% include toc.html %}

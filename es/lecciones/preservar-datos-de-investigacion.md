@@ -3,13 +3,17 @@ title: Preservar tus datos de investigación
 authors:
 - James Baker
 date: 2014-04-30
+translation_date: 2017-03-20
+editors:
+- Adam Crymble
 reviewers:
 - Jane Winters
 - Sharon Howard
 - William J. Turkel
-- Adam Crymble
 translator:
 - Víctor Gayol
+translation-editor:
+- Maria José Afanador-Llach
 translation-reviewer:
 - Antonio Rojas Castro
 - Maria José Afanador-Llach
@@ -73,7 +77,7 @@ El momento de documentar depende en gran medida de la persona y del ritmo de la 
 
 Idealmente, los datos de investigación y la documentación deben ser guardados en archivos [independientes de plataforma] como .txt para notas y .csv (valores separados por comas) o .tsv (valores separados por tabuladores) para los datos en tablas. Estos formatos de texto plano son preferibles a los formatos propietarios utilizados por defecto por Microsoft Office o iWork porque pueden abrirse con muchos paquetes de programas y tienen una gran probabilidad de permanecer visibles o editables en el futuro. Muchas *suites* de ofimática (o paquetes de *software* para oficina) incluyen la opción de guardar archivos en formatos .txt, .csv y .tsv, lo que significa que se puede continuar trabajando con programas familiares y aún así tomar las acciones apropiadas para hacer accesible tu trabajo. Comparados con .doc o .xls, estos formatos tienen el beneficio adicional, desde una perspectiva de preservación, de contener solamente elementos legibles por la computadora. Mientras que es una práctica común el uso de negritas, itálicas o colores para indicar encabezados o para establecer una conexión visual entre elementos de los datos, estas anotaciones orientadas a la visualización no son legibles por la computadora y, por lo tanto, no puede ser consultadas ni buscadas, ni son adecuadas para grandes cantidades de información. Son preferibles los esquemas simples de anotación como el uso de un doble asterisco o tres signos de almohadilla para representar una característica de los datos; en mis propias notas, por ejemplo, tres signos de interrogación indica algo a lo que necesito dar seguimiento, y lo elegí porque "???" se puede encontrar fácilmente con una búsqueda mediante CTRL + F.
 
-Es probable que en muchas ocasiones estos esquemas de anotación se desprendan de la práctica individual (y en consecuencia deban ser documentados), aunque hay sintaxis disponibles como [Markdown] (los archivos Markdown se guardan como .md). En GitHub  <https://github.com/adam-p/markdown-here> se pueden encontrar estos excelentes apuntes para quien quiera seguir -o adaptar- esta sintaxis. Se recomienda el uso de Notepad++ <http://notepad-plus-plus.org/> a los usuarios de Windows, aunque de ninguna manera es esencial para trabajar con archivos .md. Los usuarios de Mac o Unix pueden encontrar útil [Komodo Edit] o [Text Wrangler].
+Es probable que en muchas ocasiones estos esquemas de anotación se desprendan de la práctica individual (y en consecuencia deban ser documentados), aunque hay sintaxis disponibles como [Markdown](https://es.wikipedia.org/wiki/Markdown) (los archivos Markdown se guardan como .md). En GitHub  <https://github.com/adam-p/markdown-here> se pueden encontrar estos excelentes apuntes para quien quiera seguir -o adaptar- esta sintaxis. Se recomienda el uso de Notepad++ <http://notepad-plus-plus.org/> a los usuarios de Windows, aunque de ninguna manera es esencial para trabajar con archivos .md. Los usuarios de Mac o Unix pueden encontrar útil [Komodo Edit] o [Text Wrangler].
 
 #### Resumen 1
 
@@ -113,7 +117,7 @@ En los catálogos de archivo, se suelen utilizar URLs estructurados por un eleme
 
 Y el sitio Old Bailey Online usa este formato:
 
--   *nombre del sitio web*/*browse.jsp?ref=*reference number*
+-   *nombre del sitio web*/browse.jsp?ref=*número de referencia*
 -   <http://www.oldbaileyonline.org/browse.jsp?ref=OA16780417>
 
 Lo que aprendemos de estos ejemplos es que la combinación de descripciones semánticas con elementos de datos hacen consistente y predecible la lectura de los datos estructurados tanto por máquinas como por seres humanos. Transferir esto a los datos digitales acumulados durante el curso de la investigación histórica hace que los datos de investigación sean más fácilmente navegables, así como buscar y consultar utilizando las herramientas estándar provistas por nuestros sistemas operativos (y, como veremos en próximas lecciones, por herramientas más avanzadas).
@@ -152,7 +156,7 @@ Por último, se pueden utilizar más subdirectorios para separar la información
 
 Por supuesto, no toda la información encajará perfectamente en una estructura predeterminada y, a medida que surjan nuevos proyectos, tendrán que revisarse las taxonomías. De cualquier manera, el sistema resulta correcto siempre y cuando la estructura global del directorio sea consistente y predecible. No será así cuando el historiador no encuentre claramente el documento. Por ejemplo, el subdirectorio 'escritos' de la estructura anterior podría incluir un archivo .txt que indique lo que contiene (borradores, la versión final del trabajo) y lo que no contiene (investigación relativa a lo escrito).
 
-Debe tenerse presente que el nombre de este archivo de texto, así como los de toda la documentación y datos de investigación, debería servir para identificar el mismo archivo y su contenido. "Notas sobre esta carpeta.docx" no es un nombre que cumpla con este propósito, mientras que "2014-01-31\escritura\leeme.txt" reproduce el título del directorio e introduce alguna información de fecha. Un archivo 'leeme' que hice para un proyecto reciente, <https://www.dropbox.com/s/i12cv5rdnfbdoz3/network_analysis_of_Isaac_Cruikshank_and_his_publishers_readme.txt>, contiene el tipo de información que tú y otros usuarios de tus datos pueden encontrar útil.
+Debe tenerse presente que el nombre de este archivo de texto, así como los de toda la documentación y datos de investigación, debería servir para identificar el mismo archivo y su contenido. "Notas sobre esta carpeta.docx" no es un nombre que cumpla con este propósito, mientras que "2014-01-31\escritura\leeme.txt" reproduce el título del directorio e introduce alguna información de fecha. [Un archivo 'leeme' que hice para un proyecto reciente](/assets/preserving-your-research-data/network_analysis_of_Isaac_Cruikshank_and_his_publishers_readme.txt), contiene el tipo de información que tú y otros usuarios de tus datos pueden encontrar útil.
 
 Para confirmar el valor de este enfoque quizá valga la pena explicar una breve experiencia personal. Durante el curso de un proyecto de investigación anterior, recolecté unas 2.000 imágenes digitales de grabados satíricos sobre Georgia de una serie de recursos en línea, conservando los nombres de los archivos en el momento de la descarga. Si en un primer momento yo hubiese establecido una convención para nombrar estos archivos (por ejemplo, 'AÑO DE PUBLICACIÓN\NOMBRE DEL ARTISTA\TÍTULO DEL TRABAJO\FORMATO') hoy yo sería capaz de buscar y consultar estas imágenes. De hecho, comenzar cada nombre de archivo con alguna versión para indicar la fecha (YYYYMMDD) habría significado poder organizarlas de manera cronológica en Window, OS X o Linux. Y de haber retirado todos los espacios o signos de puntuación (salvo guiones, puntos, o guiones bajos) de los nombres de los archivos, podría haberlos hecho consistentes y predecibles. Esta sencilla medida habría hecho posible la gestión de esos archivos mediante la interfaz de línea de comandos. Pero no lo hice y, tal y como están ahora, yo tendría que perder mucho tiempo en modificar cada nombre de archivo individualmente a fin de que los datos puedan utilizarse de esta forma.
 
@@ -189,7 +193,7 @@ Observa los diferentes atributos de fechas. Estos reflejan el momento en que se 
 2014-02-02\_articulos\_revistas\_analisis\_leeme.txt.
 ```
 
-Finalmente, podemos crear un directorio que contenga los datos derivados de 2014-01-31_articulos_revistas.tsv, que llamaremos \\data\\ llamado \\datos_derivados\\. En este caso, cada archivo .tsv derivado contiene líneas que incluyen palabras clave como 'africa', 'america', 'arte', etcétera, y se nombran de acuerdo a ello [*Nota del traductor*: las palabras clave se escriben a propósito sin acentos para facilitar la estructura de datos en los directorios y su búsqueda independiente de plataforma].
+Finalmente, podemos crear un directorio dentro de la carpeta \\datos\\ que contenga los datos derivados de 2014-01-31_articulos_revistas.tsv, que llamaremos \\datos_derivados\\. En este caso, cada archivo .tsv derivado contiene líneas que incluyen palabras clave como 'africa', 'america', 'arte', etcétera, y se nombran de acuerdo a ello [*Nota del traductor*: las palabras clave se escriben a propósito sin acentos para facilitar la estructura de datos en los directorios y su búsqueda independiente de plataforma].
 
 ```
 2014-01-31_articulos_revista_KW_africa.tsv

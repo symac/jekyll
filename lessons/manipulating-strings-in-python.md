@@ -15,6 +15,7 @@ topics: [python]
 abstract: "This lesson is a brief introduction to string manipulation techniques in Python."
 next: from-html-to-list-of-words-1
 previous: working-with-web-pages
+python_warning: true
 ---
 
 {% include toc.html %}

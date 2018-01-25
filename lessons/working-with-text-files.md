@@ -15,6 +15,7 @@ topics: [python]
 abstract: "In this lesson you will learn how to manipulate text files using Python."
 next: code-reuse-and-modularity
 previous: viewing-html-files
+python_warning: true
 ---
 
 {% include toc.html %}

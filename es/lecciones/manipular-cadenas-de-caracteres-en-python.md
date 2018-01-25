@@ -4,11 +4,15 @@ authors:
 - William J. Turkel
 - Adam Crymble
 date: 2012-07-17
-reviewers:
+translation_date: 2017-03-15
+editors:
 - Miriam Posner
+reviewers:
 - Jim Clifford
 translator:
 - Víctor Gayol
+translation-editor:
+- Adam Crymble
 translation-reviewer:
 - Jairo A. Melo
 - Maria José Afanador-Llach
@@ -17,6 +21,7 @@ layout: lesson
 next: de-html-a-lista-de-palabras-1
 previous: trabajar-con-paginas-web
 redirect_from: /es/lessons/manipulating-strings-in-python
+python_warning: true
 difficulty: 2
 activity: transforming
 topics: [python]

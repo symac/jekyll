@@ -16,6 +16,7 @@ topics: [python]
 abstract: "In this lesson, we will make the list we created in the 'From HTML to a List of Words' lesson easier to analyze by normalizing this data."
 next: counting-frequencies
 previous: from-html-to-list-of-words-2
+python_warning: true
 ---
 
 {% include toc.html %}

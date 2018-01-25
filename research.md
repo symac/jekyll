@@ -4,7 +4,7 @@ layout: blank
 ---
 
 # Project Scholarship
-The project team and members of the wider community are involved in a number of scholarly initiatives related to our work here at _Programming Historian_. These include events, journal articles, reviews (of us by the community), and posters. If you are conducting academic research using this project please let us know.
+The project team and members of the wider community are involved in a number of scholarly initiatives related to our work here at The _Programming Historian_. These include events, journal articles, reviews (of us by the community), and posters. If you are conducting academic research using this project please [contact Jessica Parr, our managing editor](mailto:jparr1129@gmail.com).
 
 ## Original Programming Historian
 * William J. Turkel and Alan MacEachern, [_The Programming Historian_](http://niche-canada.org/wp-content/uploads/2013/09/programming-historian-1.pdf) 1st edition (Network in Canadian History &amp; Environment: 2007-2008).
@@ -20,6 +20,7 @@ The project team and members of the wider community are involved in a number of 
 * Shawn Graham, Ian Milligan, and Scott Weingart, [_Exploring Big Historical Data: The Historian's Macroscope_](http://www.themacroscope.org/2.0/), (Imperial College Press, 2015).
 
 ## Workshops & Events
+* Victor Gayol, 'Introducción a las Ciencias Sociales y Humanidades Digitales. The Programming Historian en español – COLMICH', El Colegio de Michoacán (september 2017)
 * Fred Gibbs, 'Digital History @UM: The Programming Historian', University of Michigan (27 January 2017).
 * Adam Crymble, 'Enhancing Digital Skills Applied to History', North-West University, Vanderbijlpark, South Africa (20-22 June 2016).
 * Adam Crymble and Justin Colson, 'Intro to Geocoding', Institute of Historical Research, London, (19 April 2016).

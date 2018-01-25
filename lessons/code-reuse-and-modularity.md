@@ -20,6 +20,7 @@ debug."
 next: working-with-web-pages
 previous: working-with-text-files
 categories: [lessons, original-ph, python]
+python_warning: true
 ---
 
 {% include toc.html %}

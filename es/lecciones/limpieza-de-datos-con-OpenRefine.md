@@ -5,6 +5,7 @@ authors:
 - Ruben Verborgh
 - Max De Wilde
 date: 2013-08-05
+translation_date: 2017-05-17
 reviewers:
 - Patrick Burns
 - Nora McGregor
@@ -12,6 +13,8 @@ editors:
 - Adam Crymble
 translator:
 - María-Jesús Colmenero-Ruiz
+translation-editor:
+- Antonio Rojas Castro
 translation-reviewer:
 - Antonio Rojas Castro
 - Luisina Silva

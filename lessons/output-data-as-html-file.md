@@ -16,6 +16,7 @@ abstract: "This lesson takes the frequency pairs created in the 'Counting
 Frequencies' lesson and outputs them to an HTML file."
 next: keywords-in-context-using-n-grams
 previous: creating-and-viewing-html-files-with-python
+python_warning: true
 ---
 
 {% include toc.html %}
