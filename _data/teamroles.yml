@@ -9,66 +9,84 @@
   label:
     en: Editorial Team
     es: Equipo editorial
+    fr: Équipe éditoriale
   definition:
     en: Responsible for editorial work resulting in the review and publication of lessons
     es: Responsable del trabajo editorial que deriva en la revisión y publicación de las lecciones
+    fr: Responsable des travaux éditoriaux liées à la relecture et à la publication des leçons
 - type: community
   label:
     en: Community Engagement
     es: Proyección hacia la comunidad
+    fr: Gestion de la communauté
   definition:
     en: Responsible for project outreach and impact
     es: Responsable de la proyección e impacto del proyecto
+    fr: Responsable de la promotion du projet
 - type: board
   label:
     en: Editorial Board
     es: Consejo editorial
+    fr: Comité éditorial
   definition:
     en: A fully-fledged member of the project team, involved in directing the project's future
     es: Miembro de pleno derecho del equipo del proyecto, encargado de su dirección a futuro
+    fr: Membre de l'équipe projet, en charge des orientations générales du projet
 - type: ombuds
   label:
     en: Ombudsperson
     es: Mediador
+    fr: Médiateur
   definition:
     en: A person that authors and reviewers can turn to if they have queries or concerns about any part of the peer review and publication process
     es: Persona a la que los autores y revisores pueden recurrir si tienen preguntas o inquietudes sobre cualquier parte del proceso de revisión por pares y publicación
+    fr: Personne vers laquelle les éditeurs et relecteurs peuvent se tourner en cas de problème concernant une étape de la relecture ou de la publication
 - type: spanish
   label:
     en: Spanish Team
     es: Equipo español
+    fr: Équipe espagnole
   definition:
     en: Responsible for the Spanish-language version of the project
     es: Responsable de la versión en español del proyecto
+    fr: Responsable de la version hispanique du projet
 - type: technical
   label:
     en: Technical Team
     es: Equipo técnico
+    fr: Équipe technique
   definition:
     en: Responsible for the technical features that bring the content and peer review to our community
     es: Responsable de las características técnicas respecto al contenido y la revisión por pares a nuestra comunidad
+    fr: Responsable des fonctionnalités permettant d'apporter le contenu et ses relectures à notre communauté
 - type: managing-en
   label:
     en: Managing Editor
     es: Jefe de redacción
+    fr: Rédacteur en chef
   definition:
     en: First point of contact for authors with lesson ideas
     es: Primer contacto para autores con ideas de lecciones
+    fr: Premier point de contact pour les auteurs ayant des propositions de leçons
 - type: archive
   label:
     en: Archivist
     es: Archivista
+    fr: Archiviste
   definition:
     en: Responsible for archiving the project
     es: Responsable del archivo del proyecto   
+    fr: Responsable de l'archivage du projet
 # --- Derived roles ---
 - type: ombuds-es
   label:
     en: Ombudsperson (Spanish)
     es: Mediador (español)
+    fr: Médiateur (espagnol)
   source_role: ombuds
 - type: managing-es
   label:
     en: Managing Editor (Spanish)
     es: Jefe de redacción (español)
+    fr: Directeur de rédaction (espagnol)
   source_role: managing-en
