@@ -111,7 +111,7 @@ menu-blog:
   fr:
     title: Blog
     link: /blog
-menu-lang:
+menu-lang-one:
   en:
     title: '[español]'
     link: /es
@@ -121,6 +121,17 @@ menu-lang:
   fr:
     title: '[en]'
     link: /
+menu-lang-two:
+  en:
+    title: '[français]'
+    link: /fr
+  es:
+    title: '[français]'
+    link: /fr
+  fr:
+    title: '[español]'
+    link: /es 
+
 
 # site footer
 footer:

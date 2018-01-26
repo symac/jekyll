@@ -1,7 +1,7 @@
 name: Programming Historian
 description: Introductory and intermediate programming lessons for humanists
-url: https://symac.github.io/jekyll
-baseurl: https://symac.github.io/jekyll
+url: ""
+baseurl: ""
 permalink: :categories/:title
 exclude:
   - deprecated
@@ -28,6 +28,11 @@ defaults:
       lang: "es"
   -
     scope:
+      path: "fr"
+    values:
+      lang: "fr"
+  -
+    scope:
       path: "lessons"
     values:
       lesson: true
@@ -41,6 +46,12 @@ defaults:
   -
     scope:
       path: "es/lecciones"
+    values:
+      translated-lesson: true
+      lesson: true
+  -
+    scope:
+      path: "fr/lecons"
     values:
       translated-lesson: true
       lesson: true
