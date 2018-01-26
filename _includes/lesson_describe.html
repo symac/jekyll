@@ -12,6 +12,8 @@ lesson-slug.html computes the correct lesson slug, and then this include determi
 
 {% if lesson.lang == "es" %}
   {% capture path %}{{ site.baseurl }}/es/lessons/{{ slug }}{% endcapture %}
+{% else if lesson.lang == "fr" %}
+  {% capture path %}{{ site.baseurl }}/fr/lessons/{{ slug }}{% endcapture %}
 {% else %}
   {% capture path %}{{ site.baseurl }}/lessons/{{ slug }}{% endcapture %}
 {% endif %}
