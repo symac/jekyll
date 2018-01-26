@@ -59,7 +59,7 @@ Edit website][]. Install it from the `.DMG` file
 
 It should look something like this:
 
-![screenshot of Komodo Exit on OS X](https://raw.githubusercontent.com/programminghistorian/jekyll/bc4c0f1398f54adb1add6bb156756212c28e8f78/images/komodo-edit-mac.png)
+![screenshot of Komodo Edit on OS X](https://raw.githubusercontent.com/programminghistorian/jekyll/bc4c0f1398f54adb1add6bb156756212c28e8f78/images/komodo-edit-mac.png)
 
 Komodo Edit on a Mac
 
