@@ -22,6 +22,7 @@ activity: transforming
 topics: [python, get-ready]
 abstract: "Cette première leçon dans la série sur le traitement des ressources en ligne a pour but de préparer votre ordinateur avec tout le nécessaire pour débuter la programmation. Après vous avoir montré comment installer les principaux logiciels (tous gratuits et reconnus), nous vous aiderons à les prendre en main avec quelques exemples simples et concrets."
 redirect_from: /fr/lessons/introduction-and-installation
+lang: fr
 ---
 
 Objectifs de la leçon
