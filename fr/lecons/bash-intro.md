@@ -32,57 +32,59 @@ redirect_from: /fr/lessons/intro-to-bash
 
 ## Introduction
 
-De nombreuses leçons de *Programming Historian* impliquent que vous saisissiez des commandes à travers une *interface en ligne de commande*, en opposition avec l'habitude la plus courante aujoud'hui qui passe par des *interfaces graphiques*, ou GUI (Graphical User Interface). Cela signifie que pour entrer dans un dossier, vous cliquez sur l'image d'un dossier, pour exécuter un programme, vous double-cliquez sur son icône, pour naviguer sur le web, la souris vous permet d'interagir avec les éléments de la page. Avant l'émergence des interfaces graphiques à la fin des années 80, la principale manière de communiquer avec l'ordinateur consistait en une ligne de commande.
+De nombreuses leçons de *Programming Historian* impliquent que vous saisissiez des commandes à travers une *interface en ligne de commande*, en opposition avec l'habitude la plus courante aujoud'hui qui passe par des *interfaces graphiques*, ou GUI (Graphical User Interface). Cela signifie que pour entrer dans un dossier, vous cliquez sur l'image d'un dossier, pour exécuter un programme, vous double-cliquez sur son icône, pour naviguer sur le web, la souris vous permet d'interagir avec les éléments de la page. Avant l'émergence des interfaces graphiques à la fin des années 80, la principale manière de communiquer avec l'ordinateur était la ligne de commande.
 
 {% include figure.html filename="GUI.png" caption="Interface graphique disponible sur l'ordinateur d'une chercheur (Ian Milligan)" %}
 
-Command-line interfaces have advantages for computer users who need more precision in their work -- such as digital historians. They allow for more detail when running some programs, as you can add modifiers to specify *exactly* how you want your program to run. Furthermore, they can be easily automated through [scripts](http://www.tldp.org/LDP/Bash-Beginners-Guide/html/chap_01.html), which are essentially recipes of text-based commands.
+Les interfaces en ligne de commande présentent plusieurs avantages pour les utilisateurs qui ont besoin d'effectuer des opérations précises dans le cadre de leur travail. Elles permettent, à l'aide de paramètres, de définir préciséments les traitements à effectuer ou d'obtenir des informations détaillées sur les résultats de ces traitements. De plus, elles peuvent facilement être automatisées à l'aide de [scripts](http://www.tldp.org/LDP/Bash-Beginners-Guide/html/chap_01.html).
 
-There are two main command-line interfaces, or 'shells,' that many digital historians use. On OS X or many Linux installations, the shell is known as `bash`, or the 'Bourne-again shell.'  For users on Windows-based systems, the command-line interface is by default `MS-DOS-based`, which uses different commands and [syntax](http://en.wikipedia.org/wiki/Syntax), but can often achieve similar tasks. This tutorial provides a basic introduction to the `bash` terminal, and Windows users can follow along by installing popular shells such as [Cygwin](https://www.cygwin.com/) or Git Bash (see below).
+Il existe principalement deux interfaces principales pour la ligne de commande, aussi appelées 'shells', utilisées dans les humanités numériques. Sur OS X et plusieurs distributions Linux, le shell utilisé est `bash` ('Bourne-again shell'). Les utilisateurs de Windows disposent par défaut d'un shell `basé sur MS-DOS`, qui utilise des commandes et une syntaxe différentes mais permet de résoudre des problèmes similaires. Ce tutoriel propose une introduction à `bash`, les utilisateurs Windows pourront facilement suivre les instructions données en utilisant un shell proche de bash et disponible sur Windows tel que [Cygwin](https://www.cygwin.com/) ou Git Bash (voir plus bas).
 
-This lesson uses a **[Unix shell](http://en.wikipedia.org/wiki/Unix_shell)**, which is a command-line interpreter that provides a user interface for the [Unix](http://en.wikipedia.org/wiki/Unix) operating system and for Unix-like systems. This lesson will cover a small number of basic commands. By the end of this tutorial you will be able to navigate through your file system and find files, open them, perform basic data manipulation tasks such as combining and copying files, as well as both reading them and making relatively simple edits. These commands constitute the building blocks upon which more complex commands can be constructed to fit your research data or project. Readers wanting a reference guide that goes beyond this lesson are recommended to read Deborah S. Ray and Eric J. Ray, *Unix and Linux: Visual Quickstart Guide*, 4th edition (2009).
+Cette leçon utilise un **[shell Unix](https://fr.wikipedia.org/wiki/Shell_Unix)**, un interpréteur de ligne de commandes qui offre une interface utilisateur sur Unix et les sytèmes associés. À la fin de cette leçon, vous serez capable de naviguer dans l'arborescence de documents de votre machine, trouver des fichiers, les ouvrir et effectuer des opérations de base telles que copier et combiner des fichiers, les lire et y effectuer des modifications de base. Ces commandes constituent la base sur laquelle des commandes plus complexes pourront être construites pour mener à bien vos projets de recherche. Le lecteur intéressé par une approche plus approfondie du sujet, pourra se diriger vers Deborah S. Ray et Eric J. Ray, *Unix and Linux: Visual Quickstart Guide*, 4ème édition (2009).
 
-## Windows Only: Installing Git Bash
+## Pour les utilisateurs de Windows : Installation de Git Bash
 
-For those on OS X, and most Linux installations, you're in luck — you already have a bash shell installed. For those of you on Windows, you'll need to take one extra step and install Git Bash. This can be installed by downloading the most recent 'Full installer' at [this page](https://git-for-windows.github.io/). Instructions for installation are available at [Open Hatch](https://openhatch.org/missions/windows-setup/install-git-bash).
+Si vous utilisez OS X ou la plupart des distributions Linux, vous avez de la chance, le shell bash est déjà disponible. Si vous êtes sur Windows, il vous reste une petite manipulation à faire en installant Git Bash en téléchargeant le fichier d'installation sur [cette page](https://git-for-windows.github.io/).
 
-## Opening Your Shell
+## Ouvrir le shell
 
-Let's start up the shell. In Windows, run Git Bash from the directory that you installed it in. You will have to run it as an administrator - to do so, right click on the program and select 'Run as Administrator.' In OS X, by default the shell is located in: 
+Commençons par démarrer le shell. Sur Windows, exécutez Git Bash depuis le répertoire d'installation. Vous devrez le démarrer en tant qu'administrateur. Pour cela, faites un clic droit et choisissez "Exécuter en tant qu'administrateur". Sur OS X, le shell est par défaut disponible dans : 
 
-`Applications -> Utilities -> Terminal` 
+`Applications -> Utilitaires -> Terminal` 
 
-{% include figure.html filename="Terminal.png" caption="The Terminal.app program on OS X" %}
+{% include figure.html filename="Terminal.png" caption="Le programme Terminal.app sur OS X" %}
 
-When you run it, you will see this window. 
+En le lançant, vous verrez cette fenêtre.
 
-{% include figure.html filename="Blank-Terminal.png" caption="A blank terminal screen on our OS X workstation" %}
+{% include figure.html filename="Blank-Terminal.png" caption="Écran de terminal vide sur un poste de travail OS X" %}
 
-You might want to change the default visual appearance of the terminal, as eyes can strain at repeatedly looking at black text on a white background. In the default OS X application, you can open the 'Settings' menu in 'Preferences' under Terminal. Click on the 'Settings' tab and change it to a new colour scheme. We personally prefer something with a bit less contrast between background and foreground, as you'll be staring at this a great deal. 'Novel' is a soothing one as is the popular [Solarized](http://ethanschoonover.com/solarized) suite of colour palettes. For Windows users, a similar effect can be achieved using the Git Bash `Properties` tab. To reach this, right-click anywhere in the top bar and select `Properties`.
+Vous aurez peut-être envie de modifier l'apparence visuel de ce terminal pour éviter de vos fatiguer les yeux sur du texte noir sur fond blanc. Dans l'application par défaut sur OS X, vous pouvez ouvrir les préférences dans le menu paramètres du terminal. Cliquez sur l'onglet "Profils" et choisissez un nouveau mode de couleur. Les auteurs de cet article privilégient des palettes avec un contraste moins marqué entre arrière-plan et premier plan. 'Novel' répond assez bien à ces exigences, tout comme les populaires [Solarized](http://ethanschoonover.com/solarized). Sur Windows un effet similaire peut être réalisé à l'aide de l'onglet `propriétés` de Git Bash. Pour y accéder, faites un clic droit n'importe où dans la fenêtre et choisissez `Propriétés`.
 
-{% include figure.html filename="Settings.png" caption="The Settings Screen on the OS X Terminal Shell Application" %}
+{% include figure.html filename="Settings.png" caption="Sélection d'un profil dans le shell d'OS X" %}
 
-Once you are happy with the interface, let's get started.
+Dès que votre interface correspond à vos attentes, passez à la suite.
 
-## Moving Around Your Computer's File System
+## Se déplacer dans l'arborescende de son système
 
-If, when opening a command window, you are unsure of where you are in a computer's file system, the first step is to find out what directory you are in. Unlike in a graphical system, when in a shell you cannot be in multiple directories at once. When you open up your file explorer on your desktop, it's revealing files that are within a directory. You can find out what directory you are in through the `pwd` command, which stands for "print working directory." Try inputing:
+Lorsque vous ouvrez le terminal, si vous n'êtes pas sûr de l'emplacement dans lequel vous vous trouvez sur le disque dur, la première étape est donc de l'identifier. La commande permettant de le faire est `pwd`, le sigle pour "Print Working Directory" (Afficher le répertoire de travail). Essayez donc de saisir : 
 
 `pwd`
 
-and hitting enter. If you're on OS X or Linux, your computer will probably display `/users/USERNAME` with your own user name in place of USERNAME. For example, Ian's path on OS X is `/users/ianmilligan1/`.
+puis taper sur la touche entrée. Si vous êtes sur OS X ou Linux, vous verrez sûrement quelque chose comme `/users/UTILISATEUR` avec votre login à la place d'UTILISATEUR. Par exemple sur le poste de Ian : `/users/ianmilligan1/`.
 
-Here is where you realize that those on Windows and those on OS X/Linux will have slightly different experiences. On Windows, James is at:
+Dès cette première étape, on observera des différences entre les utilisateurs sur OS X/Linux et ceux sous Windows. Pour ces derniers, le résultat de la commande donnera quelque chose comme : 
 
 `c/users/jbaker`
 
-There are minor differences, but fear not; once you're moving and manipulating files, these platform divergences can fade into the background.
+Il existe quelques petites différences de ce type mais ne vous inquiétez pas, dès que vous commencerez à déplacer et manipuler des fichiers, ces variations deviendront assez annexes.
 
-To orient ourselves, let's get a listing of what files are in this directory. Type
+Pour mieux se repérer, poursuivons en identifiant les fichiers qui se trouvent dans le répertoire courant. Tapez : 
 
 `ls`
 
-and you will see a list of every file and directory within your current location. Your directory may be cluttered or it may be pristine, but you will at a minimum see some familiar locations. On OS X, for example, you'll see `Applications`, `Desktop`, `Documents`, `Downloads`, `Library`, `Pictures`, etc. 
+et en tapant sur la touche entrée vous verrez une liste des fichiers qui se trouvent dans le répertoire courant. Selon votre organisation ce répertoire pourra être plus ou moins rempli, mais vos devriez au minimum reconnaître quelques dossiers ou fichiers habituels. Sur OS X par exemple :  `Applications`, `Bureau`, `Documents`, `Téléchargements`, etc. 
+
+Si vous avez besoin de plus d'informations qu'une simple liste de fichiers, il est possible de passer 
 
 You may want more information than just a list of files. You can do this by specifying various *flags* to go with our basic commands. These are additions to a command that provide the computer with a bit more guidance of what sort of output or manipulation you want. To get a list of these, OS X/Linux users can turn to the built-in help program. OS X/Linux users type
 
