@@ -84,145 +84,150 @@ Pour mieux se repérer, poursuivons en identifiant les fichiers qui se trouvent 
 
 et en tapant sur la touche entrée vous verrez une liste des fichiers qui se trouvent dans le répertoire courant. Selon votre organisation ce répertoire pourra être plus ou moins rempli, mais vos devriez au minimum reconnaître quelques dossiers ou fichiers habituels. Sur OS X par exemple :  `Applications`, `Bureau`, `Documents`, `Téléchargements`, etc. 
 
-Si vous avez besoin de plus d'informations qu'une simple liste de fichiers, il est possible de passer 
-
-You may want more information than just a list of files. You can do this by specifying various *flags* to go with our basic commands. These are additions to a command that provide the computer with a bit more guidance of what sort of output or manipulation you want. To get a list of these, OS X/Linux users can turn to the built-in help program. OS X/Linux users type
+Si vous avez besoin de plus d'informations qu'une simple liste de fichiers, il est possible de passer des *paramètres* à cette commande pour spécifier ce que l'on souhaite obtenir comme informations. Pour obtenir une liste des paramètres disponibles, il est possible pour les utilisateurs d'OS X et Linux de se trouver vers l'aide interne, qui peut être appelée à l'aide de la commande : 
 
 `man ls`
 
-{% include figure.html filename="man-ls.png" caption="The Manual page for the LS command" %}
+{% include figure.html filename="man-ls.png" caption="La page `manual` pour la commande ls" %}
 
-Here, you see a listing of the name of the command, the way that you can format this command and what it does. **Many of these will not make sense at this stage, but don't worry; over time you will become more familiar with them.** You can explore this page in a variety of ways: the spacebar moves down a page, or you can arrow down and arrow up throughout the document. 
+Dans cette page, vous retrouvez le nom de la commande, les options pour formater la sortie et sélectionner les fichiers à afficher. **Nombre de ces options vous paraîtront sûrement obscures pour le moment, ne vous inquiétez pas, tout s'éclaircira au fil des leçons**. Vous pouvez parcourir cette page de plusieurs manières différentes : la barre espace vous permet de passer à la page suivante, les flèches haut et bas vous permettent de faire défiler le document.
 
-To leave the manual page, press 
+Pour quitter le manuel, appuyez sur la touche :
 
 `q`
 
-and you will be brought back to the command line where you were before entering the manual page.
+et vous serez renvoyé à la ligne de commande où vous vous trouviez précédemment.
 
-Try playing around with the `man` page for the other command you have learned so far, `pwd`.
+Vous pouvez essayer d'utiliser `man` pour l'autre commande que nous avons vu jusqu'ici, `pwd`.
 
-Windows users can use the `help` command, though this command has fewer features than `man` on OS X/Linux. Enter `help` to see the help available, and `help pwd` for an example of the command's output.
+Les utilisateurs de Windows peuvent utiliser la commande `help`, mais cette option propose une information moins riche que ce qui est disponible sur OS X/Linux. Entrez la comand `help` pour voir l'aide disponible, et `help pwd` pour un exemple sur la commande `pwd` par exemple.
 
-Let's try using a few of those options you saw in the `man` page for ls. Perhaps you only want to see TXT files that are in our home directory. Type
+Nous allons maintenant pouvoir essayer quelques options que nous avons vu dans le `man` de la commande ls. Si par exemple vous souhaitez voir la liste des fichiers TCT de votre répertoire racine, tapez : 
 
 `ls *.txt`
 
-which returns a list of text files, if you have any in your home directory (you may not, and that is OK as well). The \* command is a **wildcard** — it stands for 'anything.' So, in this case, you're indicating that anything that fits the pattern:
+qui vous affichera la liste des fichiers correspondants s'il en existe dans le répertoire en question. Le \* correspond à un **joker** (ou **métacaractère**) et signifie 'n'importe quoi'. Dans le cas présent, cela signifie que l'on recherche les fichiers dont le nom correspond au modèle : 
 
-[anything.txt]
+[quelquechose.txt]
 
-will be displayed. Try out different combinations. If, for example, you had several files in the format `1-Canadian.txt`, `2-Canadian.txt`, and so forth, the command `ls *-Canadian.txt` would display them all but exclude all other files (those that do not match the pattern).
+Faites différents essais avec ce principe. Si par exemple vous avez plusieurs fichiers suivant le modèle de nommage : `1-Canadian.txt`, `2-Canadian.txt`, etc, la commande `ls *-Canadian.txt` les afficherait tous, en excluant les fichiers qui ne correspond pas à ce modèle de [quelquechose]-Canadian.txt.
 
-Say you want more information. In that long `man` page, you saw an option that might be useful: 
+Imaginons que l'on souhaite obtenir plus d'informations sur les fichiers sélectionnés. Dans le `man`, on trouve une option qui peut être utile :  
 
->     -l      (The lowercase letter ``ell''.)  List in long format.  (See below.)  If
->             the output is to a terminal, a total sum for all the file sizes is out-
->             put on a line before the long listing.
+>     -l      En plus du nom, afficher le type du fichier, les
+>             permissions d'accès, le nombre de liens  physiques,
+>             le nom du propriétaire et du groupe, la taille en
+>             octets, et l'horodatage
 
-So, if you type
+Donc avec la commande :
 
 `ls -l`
 
-the computer returns a long list of files that contains information similar to what you'd find in your finder or explorer: the size of the files in bites, the date it was created or last modified, and the file name. However, this can be a bit confusing: you see that a file test.html is '6020' bits large. In commonplace language, you are more used to units of measurement like bytes, kilobytes, megabytes, and gigabytes. 
+vous obtenez dans le terminal une longue liste de fichiers avec des informations similaires à ce que vous trouveriez dans votre explorateur de documents : la taille des fichiers en octets, la date de création, de modification et le nom de fichier. Cette vue n'est pas forcément des plus lisibles, si l'on observe par exemple un fichier test.html donc la taille est de '6020' octets. On est en général plus habitués à des tailles en 
 
-Luckily, there's another flag:
+the computer returns a long list of files that contains information similar to what you'd find in your finder or explorer: the size of the files in bites, the date it was created or last modified, and the file name. However, this can be a bit confusing: you see that a file test.html is '6020' bits large. In commonplace language, you are more used to units of measurement like bytes, kilooctet, mégaoctet, et gigaoctet. 
 
->     -h      When used with the -l option, use unit suffixes: Byte, Kilobyte,
->             Megabyte, Gigabyte, Terabyte and Petabyte in order to reduce the number
->             of digits to three or less using base 2 for sizes.
+Heureusement, il existe un paramètre pour cela : 
 
-When you want to use two flags, you can just run them together. So, by typing
+>     -h      Ajouter une lettre indiquant l'unité de taille, 
+>             comme M pour méga-octets. (Nouveauté dans fileutils-4.0). 
+
+Si vous souhaitez combiner deux paramètres, il suffit de les utiliser en même temps, par exemple :
 
 `ls -lh`
 
-you receive output in a human-readable format; you learn that that 6020 bits is also 5.9KB, that another file is 1 megabyte, and so forth. 
+vous affichera une liste détaillée, dans un format "humain". Vous verrez ainsi que le fichier évoqué précédemment de 6020 octets fait en fait 5,9 ko, qu'un autre fait 1 Mo, etc.
 
-These options are *very* important. In other lessons within the *Programming Historian*, you'll see them. [Wget](/lessons/applied-archival-downloading-with-wget), [MALLET](/lessons/topic-modeling-and-mallet), and [Pandoc](/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) all use the same syntax. Luckily, you do not need to memorize syntax; instead, keep these lessons handy so you can take a quick peek if you need to tweak something. These lessons can all be done in any order.
+Ces options sont *très* importantes et vous les verrez, adaptées à d'autres commandes, dans d'autres leçons de *Programming historian** : [Wget](/fr/lessons/automated-downloading-with-wget), [MALLET](/lessons/topic-modeling-and-mallet) *[leçon en anglais]*, et [Pandoc](/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) *[leçon en anglais]*. 
 
-You've now spent a great deal of time in your home directory. Let's go somewhere else. You can do that through the `cd` or Change Directory command. 
+Nous avons maintenant passé un peu de temps dans notre répertoire de base, il est temps d'aller voir ailleurs. Pour cela il existe la commande `cd` (*change directory*) qui va nous permettre de nous déplacer.
 
-If you type
+Si vous tapez :
+`cd desktop` (ou `cd Bureau` selon la langue utilisée par le système)
 
-`cd desktop` 
-
-you are now on your desktop. This is akin to you 'double-clicking' on the 'desktop' folder within a file explorer. To double check, type `pwd` and you should see something like:
+vous serez maintenant dans le répertoire correspondant à votre bureau. C'est l'équivalent du clic sur un dossier dans l'explorateur de documents. Pour contrôler que tout s'est bien passé, tapez la commande `pwd` et vous devriez voir quelque chose comme : 
 
 `/Users/ianmilligan1/desktop`
 
-Try playing around with those earlier commands: explore your current directory using the `ls` command.
+Vous pouvez alors explorer l'arborescence de fichiers en combinant cette commande `cd` avec la commande `ls`.
 
-If you want to go back, you can type
+Si vous voulez remonter d'un niveau dans l'arboresence, il suffit d'utiliser la commande :
 
 `cd ..`
 
-This moves us 'up' one directory, putting us back in `/Users/ianmilligan1/`. If you ever get completely lost, the command
+Cela aura pour effet de 'remonter' d'un répertoire, et dans l'exemple présent, nous renvoyer dans `/Users/ianmilligan1/`. Si jamais vous voulez revenir directement à votre répertoire racine, il suffit d'utiliser la commande :
 
 `cd --` 
 
-will bring you right back to the home directory, right where you started.
+Continuez à explorer, entrez dans le répertoire contenant vos documents, celui contenant les images, etc. Prenez l'habitude de vous déplacer dans les répertoires, en imaginant que vous êtes en train de naviguer dans une [arboresence](https://fr.wikipedia.org/wiki/Arborescence). Si vous êtes dans le répertoire Bureau, il vous sera ainsi impossible de taper `cd documents` car le répertoire racine est un sous-dossier de votre répertoire racine, alors que le Bureau est un dossier frère du répertoire documents. Pour passer d'un répertoire à un répertoire frère, il va falloir repasser par le dossier parent (`cd ..`) et redescendre dans le répertoire désiré (`cd documents`).
 
-Try exploring: visit your documents directory, your pictures, folders you might have on your desktop. Get used to moving in and out of directories. Imagine that you are navigating a [tree structure](http://en.wikipedia.org/wiki/Tree_structure). If you're on the desktop, you won't be able to `cd documents` as it is a 'child' of your home directory, whereas your Desktop is a 'sibling' of the Documents folder. To get to a sibling, you have to go back to the common parent. To do this, you will have to back up to your home directory (`cd ..`) and then go forward again to `cd documents`.
-
-Being able to navigate your file system using the bash shell is very important for many of the lessons at the *Programming Historian*. As you become more comfortable, you'll soon find yourself skipping directly to the directory that you want. In our case, from anywhere on our system, you could type
+Être capable de se déplacer dans l'arborescence à l'aide de la ligne de commande est une compétence importante pour de nombreuses leçons de *Programming historian*. Au fur et à mesure que vous développerez cette compétence vous vous déplacerez directement dans le répertoire désiré. Si l'on reprend l'exemple donné précédemment, on pourrait imaginer se déplacer depuis n'importe quel endroit du système vers le répertoire que l'on souhaite en tapant : 
 
 `cd /users/ianmilligan1/mallet-2.0.7` 
 
-or, on Windows, something like 
+ou sur Windows : 
 
 `cd c:\mallet-2.0.7\`
 
-and be brought to our MALLET directory for [topic modeling](/lessons/topic-modeling-and-mallet).
+Ces commandes auraient pou effet de nous envoyer dans le répertoire MALLET utilisé dans la leçon [modèle thématique avec MALLET](/lessons/topic-modeling-and-mallet) *[leçon en anglais]*.
 
-Finally, try
+Finalement, tapez : 
 
 `open .` 
 
-in OS X or 
+sur OS X ou 
 
 `explorer .` 
 
-in Windows. That command will open up your GUI at the current directory. Make sure to leave a space between `open` or `explorer` and the period.
+sur Windows ou
 
-## Interacting with Files
+`nautilus .`
 
-As well as navigating directories, you can interact with files on the command line: you can read them, open them, run them, and even edit them, often without ever having to leave the interface. There is some debate over why one would do this. The primary reason is the seamless experience of working on the command line: you never have to pick up your mouse or touch your track pad, and, although it has a steep learning curve it can eventually become a sole writing environment. Furthermore, many programs require you to use the command line to operate with them. Since you'll be using programs on the command line, it can often be quicker to make small edits without switching into a separate program. For some of these arguments, see Jon Beltran de Heredia's ["Why, oh WHY, do those #?@! nutheads use vi?"](http://www.viemu.com/a-why-vi-vim.html). 
+sur Linux avec Gnome et cet explorateur de documents installé. 
 
-Here's a few basic ways to do interact with files. 
+Cette commande ouvrira l'explorateur dans le répertoire courant. Faites attention à bien laisser un espace entre la commande (open, explorer, nautilus) et le point.
 
-First, you can create a new directory so you can engage with text files. We will create it on your desktop, for convenience's sake. You can always move it later. Navigate to your desktop using your shell, and type:
+## Interagir avec les fichiers
+
+La ligne de commande ne permet pas seulement de naviguer dans l'arborescence, elle permet aussi d'interagir avec les fichiers : les lire, ouvrir, exécuter et même les éditer, le plus souvent sans même avoir à quitter le terminal.
+
+On est en droit de se demander quel est l'intérêt d'utiliser le terminal pour cela à l'heure des interfaces graphiques. La principale raison est que vous n'avez pas à attraper la souris pour effectuer l'action, et si la courbe d'apprentissage peut être un peu raide, le shell peut devenir un environnement complet de travail. Qui plus est, certains programmes impliquent que vous utilisiez le terminal pour communiquer avec eux. Dès lors que vous allez utilisé la ligne de commande, vous verrez qu'il peut être facile de faire des petites opérations sur les fichiers sans basculer entre différents logiciels. Pour d'autres arguments sur le sujet, vous pourrez lire l'article de Jon Beltran de Heredia : ["Why, oh WHY, do those #?@! nutheads use vi?"](http://www.viemu.com/a-why-vi-vim.html). 
+
+Voici quelques opérations simples pour interagir avec les fichiers.
+
+Vous pouvez commencer par créer un répertoire. Nous allons le créer sur le Bureau, vous pourrez toujours le déplacer plus tard. Après vous être déplacé sur le bureau (`cd`), tapez : 
 
 `mkdir ProgHist-Text`
 
-This creates a directory named, you guessed it, 'ProgHist-Text.' In general, it's good to avoid putting spaces in your filenames and directories when using the command line (there are workarounds, of course, but this approach is simpler). You can look at your desktop to verify it has worked. Now, move into that directory (remember, that would be `cd ProgHist-Text`).
+Cela aura pour effet de créer un répertoire nommé, vous l'aurez deviné, 'ProgHist-Text'. De manière générale, il est préférale d'éviter les espaces dans les noms de fichiers et de répertoires (il existe des solutions de contournement bien entendu, mais l'approche sans espace est la plus simple). Vous pouvez regarder votre bureau pour vérifier que tout s'est bien déroulé. Entrez maintenant dans le répertoire nouvellement créé (en tapant quelque chose qui devrait ressembler à `cd ProgHist-Text`).
 
-But wait! There's a trick to make things a bit quicker. Go up one directory (`cd ..` - which will take you back to the Desktop). To navigate to the `ProgHist-Text` directory you could type `cd ProgHist-Text`. Alternatively, you could type `cd Prog` and then hit tab. You will notice that the interface completes the line to `cd ProgHist-Text`. **Hitting tab at any time within the shell will prompt it to attempt to auto-complete the line based on the files or sub-directories in the current directory. This is case sensitive, however (i.e. in the previous example, `cd prog` would not auto complete to `ProgHist-Text`. Where two or more files have the same characters, the auto-complete will only fill up to the first point of difference. We would encourage using this method throughout the lesson to see how it behaves.**
+Mais attendez ! Il y a une astuce pour faciliter les choses. Remontez dans le répertoire parent (`cd ..`, qui va vous ramener au bureau). Pour naviguer vers le répertoire `ProgHist-Text` vous pouvez bien entendu taper `cd ProgHist-Text` mais vous pouvez aussi taper `cd Prog` puis appuyer sur la touche tabulation. Vous verrez alors que l'interface complète la ligne en `cd ProgHist-Text`. **Utiliser la tabulation va activer l'[auto-complétion](https://fr.wikipedia.org/wiki/Compl%C3%A8tement) grâce à laquelle le terminal va essayer de compléter la chaîne en cours de frappe en fonction du contexte (fichiers disponibles, commandes existantes ...). Attention, le terminal est sensible à la case (dans l'exemple suivant, `cd prog` ne complètera par exemple par en `ProgHist-Text` car il manque la majuscule initiale). Si plusieurs fichiers partagent le même début de nom, l'autocomplétion ne se fera que jusqu'au point de divergence, laissant à l'utilisateur le soit de taper le caractère suivant pour spécifier son choix. Nous vous encourageons à utiliser cette méthode au cours de la leçon pour l'apprivoiser**.
 
-Now you need to find a basic text file to help us with the example. Why don't you use a book that you know is long, such as Leo Tolstoy's epic *War and Peace*. The text file is availiable via [Project Gutenberg](http://www.gutenberg.org/ebooks/2600). If you have already installed [wget](/lessons/applied-archival-downloading-with-wget), you can just type
+Vous allez maintenant devoir trouver un fichier texte basique sur lequel exécuter les exemples. Le mieux est d'utiliser un ouvrage que l'on sait assez conséquent, on vous propose donc de partir sur *Guerre et Paix* de Léon Tolstoï. Le fichier texte est disponible via le [Projet Gutenberg](http://www.gutenberg.org/ebooks/2600). Si vous avez déjà installé [wget](/fr/lessons/automated-downloading-with-wget), il vous suffit de taper :
 
 `wget http://www.gutenberg.org/cache/epub/2600/pg2600.txt`
 
-If you do not have wget installed, download the text itself using your browser. Go to the link above, and, in your browser, use the 'Save Page as..' command in your 'file menu.' Save it in your new 'ProgHist-Text directory.' Now, when you type
+Si wget n'est pas installé, téléchargez le fichier en utilisateur votre navigateur web. Suivez le lien ci-dessus en, dans votre navigateur, utilisez la fonction "Enregistrer sous" du menu "Fichier". Choisissez le répertoire ProgHist-Text comme lieu d'enregistrement du fichier. Si maintenant vous tapez dans le terminal :
 
 `ls -lh`
 
-you see
+vous verrez quelque chose du type : 
 
 >> -rw-r--r--+ 1 ianmilligan1  staff   3.1M  1 May 10:03 pg2600.txt
 
-You can read the text within this file in a few different ways. First, you can tell our computer that you want to read it using the standard program that you use to open text files. By default, this may be TextEdit on OS X or Notepad in Windows. To open a file, just type
+Vous pouvez lire le texte contenu dans ce fichier de plusieurs manières. Vous pouvez tout d'abord indiquer à votre système de le lire avec l'outil standard de lecture de fichiers texte. Par défaut ce sera TextEdit sur OS X et Notepad sous Windows. Pour ouvrir un fichier, tapez donc : 
 
 `open pg2600.txt` 
 
-on OS X, or 
+sur OS X, ou 
 
 `explorer pg2600.txt`
 
-in Windows. 
+sur Windows. 
 
-This selects the default program to open that type of file, and opens it. 
+Cela a pour effet de sélectionner le programme par défaut et d'ouvrir le fichier avec.
 
-However, you often want to just work on the command line without leaving it. You can read files within this environment as well. To try this, type:
+Cependant, on souhaitera souvent consulter un fichier sans quitter le terminal. C'est possible et il suffit de taper :
 
 `cat pg2600.txt`
 
