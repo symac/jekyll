@@ -231,105 +231,107 @@ Cependant, on souhaitera souvent consulter un fichier sans quitter le terminal. 
 
 `cat pg2600.txt`
 
-The terminal window erupts and *War and Peace* cascades by. That's great, in theory, but you can't really make any sense of that amount of text? Instead, you may want to just look at the first or the last bit of the file. 
+Le terminal s'affolle et *Guerre et Paix* défile. C'est super mais il est difficile de faire quoi que ce soit avec cela. On pourrait préférer de n'afficher que les premières lignes : 
 
 `head pg2600.txt`
 
-Provides a view of the first ten lines, whereas
+affiche les 10 premières lignes, alors que :
 
 `tail pg2600.txt`
 
-provides a perspective on the last ten lines. This is a good way to quickly determine the contents of the file. You could add a command to change the amount of lines displayed: `head -20 pg2600.txt`, for example, would show the first twenty lines.
+affiche les 10 dernières lignes. C'est une bonne manière de déterminer facilement le contenu d'un fichier. Il est aussi possible de choisir le nombre de lignes à afficher : `head -20 pg2600.txt` affichera par exemple les 20 premières lignes.
 
-You may also want to change the file name to something more descriptive. You can 'move' it to a new name by typing
+Vous aurez peut-être aussi envie de renommer le fichier pour un nom plus explicite. Vous pouvez le 'déplacer' vers son nouveau nom en tapant : 
 
 `mv pg2600.txt tolstoy.txt`
 
-Afterwards, when you perform a `ls` command, you will see that it is now `tolstoy.txt`. Had you wanted to duplicate it, you could also have run the copy command by typing
+Si vous effectuez ensuite un `ls`, vous verrez que le fichier se nomme désormais `tolstoy.txt`. Si vous aviez voulu en faire une copie plutôt que le renommer, cela aurait été possible en tapant : 
 
 `cp pg2600.txt tolstoy.txt`
 
-you will revisit these commands shortly.
+Nous reverrons ces commandes rapidement.
 
-Now that you have used several new commands, it's time for another trick. Hit the up arrow on your keyboard. Notice that `cp pg2600.txt tolstoy.txt` appears before your cursor. You can continue pressing the up arrow to cycle through your previous commands. The down arrow cycles back toward your most recent command.
+Maintenant que vous avez utiliser plusieurs nouvelles commandes, c'est le moment de découvrir une nouvelle astuce. Si vous appuyez sur la flèche "haut" de votre classier, vous verrez que la commande `cp pg2600.txt tolstoy.txt` apparaît. Vous pouvez continuer à appuyer sur la flèche haut pour remonter dans l'historique de vos commandes. Si vous êtes remonté trop loin, la flèche bas vous permettra de repartir en avant dans l'historique.
 
-After having read and renamed several files, you may wish to bring their text together into one file. To combine, or concatenate, two or more files, you can use the `cat` command. First, let's duplicate the Tolstoy file ( `cp tolstoy.txt tolstoy2.txt`). Now that you have two copies of *War and Peace*, let's put them together to make an **even longer** book. 
+Après avoir lu et renommé plusieurs fichiers, vous aurez peut-être envie de combiner leurs contenus dans un ficher unique. Pour cela il existe la commande `cat`. Commençons par dupliquer le fichier (`cp tolstoy.txt tolstoy2.txt`). Nous avons maintenant deux copies de *Guerre et paix** que nous allons assembler en un ouvrage encore plus long. 
 
-To combine, or concatenate, two or more files use the `cat` command. Type 
+Pour cela, on va taper la commande suivant : 
 
 `cat tolstoy.txt tolstoy2.txt` 
 
-and press enter. This prints, or displays, the combined files within the shell. However, it is too long to read on this window! Luckily, by using the `>` command, you can send the output to a new file, rather than the terminal window. Type 
+Cette commande va afficher la concaténation des deux documents, bien trop longue pour être lue à l'écran. Heureusement il est possible d'utiliser la commande `>` qui permet d'envoyer le résultat d'une commande dans un nouveau fichier plutôt que de l'afficher dans le terminal. Tapez : 
 
 `cat tolstoy.txt tolstoy2.txt > tolstoy-twice.txt`. 
 
-Now, when you type `ls` you'll see `tolstoy-twice.txt` appear in your directory.
+Lorsque vous ferez un `ls`, vous verrez `tolstoy-twice.txt` apparaître dans le répertoire.
 
-When combining more than two files, using a wildcard can help avoid having to write out each filename individually. As you have seen above, `*`, is a place holder for zero or more characters or numbers. So, if you type 
+Si vous avez plus de deux fichiers à combiner, utilisez un joker pour ne pas avoir à taper tous les noms de fichiers. Comme on l'a vu plus haut, `*` permet de remplacer n'importe quelle chaîne de caractères. Si l'on tape :
 
 `cat *.txt > everything-together.txt` 
 
-and hit enter, a combination of all the .txt files in the current directory are combined in alphabetical order as `everything-together.txt`. This can be very useful if you need to combine a large number of smaller files within a directory so that you can work with them in a text analysis program. Another wildcard worth remembering is `?` which is a place holder for a single character or number.
+on va donc générer une combinaison de tous les fichiers avec l'extension *txt* du répertoire courant, triés par ordre alphabétique sauvegardée dans le fichier `everything-together.txt`. Cela peut être très utile si l'on a de nombreux petits fichiers texte dans un répertoire et que l'on veut les combiner avant de les analyser à l'aide d'un outil dédié. Un autre caractère joker à retenir est le `?` qui permet de remplacer un caractère ou un chiffre. 
 
-## Editing Text Files Directly on the Command Line
+## Éditer des fichiers texte en ligne de commande
 
-If you want to read a file in its entirety without leaving the command line, you can fire up [vim](http://en.wikipedia.org/wiki/Vim_%28text_editor%29). Vim is a very powerful text editor, which is perfect for using with programs such as [Pandoc](http://johnmacfarlane.net/pandoc/) to do word processing, or for editing your code without having to switch to another program. Best of all, it comes included with bash on both OS X and Windows. Vim has a fairly steep learning curve, so we will just touch on a few minor points. 
+Si vous voulez consulter un fichier dans son intégralité sans quitter la ligne de commande, vous pouvez lancer [vim](https://fr.wikipedia.org/wiki/Vim). Vim est un éditeur de texte très puissant, idéal en combinaison avec [Pandoc](http://johnmacfarlane.net/pandoc/) pour faire du traitement de texte ou pour éditer du code sans avoir à changer de programme. Il présente aussi l'avantage d'être préinstallé dans le bash sur OS X et Windows. La courbe d'apprentissage de Vim est très lente, nous nous contenterons donc de certaines options de base.
 
-Type 
+Tapez : 
 
 `vim tolstoy.txt`
 
-You should see vim come to life before you, a command-line based text editor.
+Vim devrait s'ouvrir en affichant le début du fichier indiqué : 
 
 {% include figure.html filename="vim.png" caption="Vim" %}
 
-If you really want to get into Vim, there is a [good Vim guide](http://vimdoc.sourceforge.net/htmldoc/quickref.html) available. 
+Si vous souhaitez découvrir Vim de manière plus détaillée, il existe un [bon guide pour cela](http://vimdoc.sourceforge.net/htmldoc/quickref.html). 
 
-Using Vim to read files is relatively simple. You can use the arrow keys to navigate around and could theoretically read *War and Peace* through the command line (one should get an achievement for doing that). Some quick basic navigational commands are as follows:
+Utiliser Vim pour lire des fichiers est relativement simple. Les flèches haut et bas vous permettent de vous déplacer dans le document, et vous pourriez donc en théorie lire l'intégralité de *Guerre et Paix* en ligne de commande (et mériteriez une récompense pour cela !). Quelques commandes de base vous permettront de naviguer facilement dans le fichier.
 
-`Ctrl+F` (that is, holding down your 'control key' and pressing the letter F) will move you down a page (`Shift+UpArrow` for Windows).
+`Ctrl+F` (maintenez la touche Ctrl enfoncée puis appuyez sur la lettre F) vous fera descendre d'une page (`Shift + Flèche haut` sur Windows).
 
-`Ctrl+B` will move you up a page. (`Shift+DownArrow` for Windows users). 
+`Ctrl+B` vous fera remonter d'une page. (`Shift + Flèche bas` sur Windows). 
 
-If you want to rapidly move to the end of a line, you can press: `$` and to move to the start of one, `0`. You can also move between sentences by typing `)` (forward) or `(` (backwards). For paragraphs, use `}` and `{`. Since you are doing everything with your keyboard, rather than having to hold your arrow key down to move around a document, this lets you zip quickly back and forth.
+Si vous voulez accéder rapidement à la fin d'une ligne, vous pouvez appuer sur la touche `$`, et pour accéder au début d'une ligne, sur `0`. Vous pouvez aussi passer de phrase en phrase à l'aide des touches `)` (pour avancer d'une phrase) et `(` (pour reculer d'une phrase). Pour vous déplacer entre paragraphes le principe est le même avec `}` et `{`. Comme tout se fait au clavier, cela vous permet de vous déplacer rapidement sans avoir à cliquer frénétiqument sur la barre de défilement comme on le ferait avec la souris.
 
-Let's scroll to the top and do a minor change, such as adding a `Reader` field in the heading. Move your cursor in between **Author:** and **Translators:**, like so:
+Revenons maintenant au début du fichier et faisons une petite modification en ajoutant un champs **Reader** entre **Author:** et **Translators:** :
 
-{% include figure.html filename="about-to-insert.png" caption="About to Insert a Field" %}
+{% include figure.html filename="about-to-insert.png" caption="Prêt à insérer le champ" %}
 
-If you just start typing, you'll get an error message or the cursor will begin jumping around. This is because you have to specify that you want to do an edit. Press the letter
+Si vous commencez à taper le texte souhaité, vous verrez un message d'erreur et le curseur va commencer à se déplacer de manière bizarre. C'est parcequ'il faut commencer par indiquer à Vim que vous souhaitez éditer le fichier. Pour cela, pressez la touche : 
 
 `a`
 
-At the bottom of the screen, you will see
+En bas de l'écran, vous verrez apparaître :
 
-`-- INSERT --`
+`-- INSERTION --`
 
-This means you are in insert mode. You can now type and edit text as if you are in a standard text editor. Press `enter` twice, then `arrow up`, and type
+Cela signifie que vous avez changé de mode et êtes passé en insertion. Vous pouvez maintenant saisir du texte comme dans n'importe quel éditeur de texte. Appuyez deux fois sur `entrée` puis `flèche haut` et saisissez : 
 
 `Reader: A Programming Historian`
 
-When you are done, press `ESC` to return to reading mode.
+Lorsque c'est bon, appuyez sur la touche `ESC` (échap) pour repasser en lecture.
 
-To leave vim or to make saves, you have to enter a series of commands. Press `:` and you'll move to the command input line of Vim. you can enter a variety of commands here. If you want to save the file, type `w` to 'write' the file. If you execute that command, you will see
+Pour quitter Vim ou pour enregistrer vos modifications, il faut entrer une série de commandes. Appuyez sur `:` pour passer en saisie de commande. Si vous souhaitez enregistrer le fichier la commande à utiliser est `w` ('pour 'write'). Si vous faites cela, vous verrez le message suivant apparaître en bas de l'écran :
 
->> "tolstoy.txt" [dos] 65009L, 3291681C written
+>> "tolstoy.txt" [dos] 65009L, 3291681C écrit(s)
 
-{% include figure.html filename="after-writing.png" caption="After Writing the File, with Our Minor Change" %}
+{% include figure.html filename="after-writing.png" caption="Après avoir enregistré le fichier, avec notre petite modification" %}
 
-If you want to quit, type `:` again and then `q`. It will return you to the command line. As with the rest of bash, you could have also combined the two commands. Pressing `:` and then typing `wq` would have written the file and then quit. Or, if you wanted to exit **without** saving, `q!` would have quit vim and overriden the default preference to save your changes.
+Si vous voulez maintenant quitter, tapez à nouveau `:` puis `q`. Vous reviendrez alors à la ligne de commande. Comme d'habitude dans le bash, vous auriez pu combiner les deux opérations. Appuyer sur `:` puis taper `wq` permet d'enregistrer le fichier et quitter Vim en une fois. Ou, si vous souhaitez quitter Vim **sans** sauvegarder les modifications : `q!`. 
 
-Vim is different than you are likely used to and will require more work and practice to become fluent with it. But if you are tweaking minor things in files, it is a good way to get started. As you become more comfortable, you might even find yourself writing term papers with it, by harnessing the [footnoting and formatting power of Pandoc and Markdown](/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown).
+Vim est différent des éditeurs que l'on a l'habitude d'utiliser et il vous faudra un peu de temps pour devenir à l'aise avec. Mais si vous souhaitez simplement faire des modifications basiques dans un fichier, c'est l'outil idéal pour commencer. Il est même possible de rédiger des documents complets et structurés avec, en utilisant la puissance de [Pandoc & Markdown pour le formattage et les notes de bas de page](/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) [leçon en anglais].
 
-## Moving, Copying, and Deleting Files
+## Déplacer, copier et supprimer des fichiers
 
-Let's say you are done with this directory, and you would like to move `tolstoy.txt` somewhere else. First, you should create a backup copy. The shell is quite unforgiving with mistakes, and backing up is even more important than with GUIs. If you delete something here, there's no recycling bin to fish it out of. To create a backup, you can type
+Imaginons que nous ayons fini de travailler avec ce dossier et que l'on souhaite déplacer `tolstoy.txt` à un autre endroit. Nous pouvons commencer par créer une copie de sauvegarde. Le terminal est en effet assez impardonnable avec les erreurs et faire des sauvegardes est encore plus important qu'avec une interface graphique. Si vous supprimez un fichier dans le terminal, il n'existe pas de corbeille où le retrouver. Pour faire une sauvegarde on va lancer la commande suivante : 
 
 `cp tolstoy.txt tolstoy-backup.txt`
 
-Now when you run a `ls` command you will see five files, two of which are the same: `tolstoy.txt` and `tolstoy-backup.txt`. 
+Si l'on fait maintenant un `ls`, on devrait voir 5 fichiers, dont deux contiennent les mêmes informations : `tolstoy.txt` et `tolstoy-backup.txt`. 
 
-Let's move the first of these somewhere else. By way of example, let's create a second directory on your desktop. Move up to your desktop (`cd ..`) and `mkdir` another directory. Let's call it `proghist-dest`. 
+Commençons par déplacer le premier à un autre endroit. Par exemple, créons un deuxième dossier sur le bureau. Pour cela, on remonte au niveau du bureau (`cd ..`) puis on fait un `mkdir` pour ce nouveau dossier. Appelons le par exemple `proghist-dest`. 
+
+Pour copier `tolstoy.txt` nous avons plusieurs options. 
 
 To copy `tolstoy.txt` you have a few different options. you could run these commands from anywhere in the shell, or you could visit either the origin or destination directories. For this example, let's just run it from here. The basic format of the copy command is `cp [source] [destination]`. That is, you type `cp` first, and then enter the file or files that you want to copy followed by where they should go.
 
