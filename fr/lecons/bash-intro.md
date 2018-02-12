@@ -331,70 +331,66 @@ Si l'on fait maintenant un `ls`, on devrait voir 5 fichiers, dont deux contienne
 
 Commençons par déplacer le premier à un autre endroit. Par exemple, créons un deuxième dossier sur le bureau. Pour cela, on remonte au niveau du bureau (`cd ..`) puis on fait un `mkdir` pour ce nouveau dossier. Appelons le par exemple `proghist-dest`. 
 
-Pour copier `tolstoy.txt` nous avons plusieurs options. 
-
-To copy `tolstoy.txt` you have a few different options. you could run these commands from anywhere in the shell, or you could visit either the origin or destination directories. For this example, let's just run it from here. The basic format of the copy command is `cp [source] [destination]`. That is, you type `cp` first, and then enter the file or files that you want to copy followed by where they should go.
-
-In this case, the command
+Pour copier `tolstoy.txt` nous avons plusieurs options. Via une commande lancée depuis n'importe où dans le shell, ou depuis le répertoire d'origine ou de destination. Dans le cas présent nous allons utiliser une commande qui pourra être utilisée depuis n'importe quel endroit de l'arboresence. La fonction de copie s'appelle sous la forme `cd [source] [destination]`. Dans le cas présent, la commande : 
 
 `cp /users/ianmilligan1/desktop/proghist-text/tolstoy.txt /users/ianmilligan1/desktop/proghist-dest/`
 
-will copy Tolstoy from the first directory to the second directory. You will have to insert your own username in place of 'ianmilligan1'. This means you now have three copies of the novel on our computer. The original, the backup and the new copy in the second directly. If you wanted to **move** the file, that is, not leave a copy behind, you could run the command again, swapping `cp` for `mv`; let's not do this yet.
+va copier le fichier Tolstoy depuis le premier répertoire vers le second (pensez à changer le pseudo ianmilligan1 par le votre et à adapter le chemin global à la structure de votre machive). Vous aurez maintenant trois copies de Tolstoï sur votre ordinateur : l'original, la copie de sauvegarde et la nouvelle copie dans le second répertoire. Si vous aviez voulu déplacer le fichier plutôt qu'en créer une copie, il suffit de reprendre la syntaxe précédente en remplaçant `cp` par `mv` mais nous verrons cela plus tard.
 
-You can also copy multiple files with a single command. If you wanted to copy **both** the original and the backup file, you could use the wildcard command. 
+Il est aussi possible de copier plusieurs fichiers à la fois. Si vous aviez voulu copier à la fois l'original et la copie de sauvegarde, vous pouvez le faire à l'aide d'un caractère joker : 
 
 `cp /users/ianmilligan1/desktop/proghist-text/*.txt /users/ianmilligan1/desktop/proghist-dest/`
 
-This command copies **all** the text files from the origin directory into the destination directory.
+Cette commande copie **tous** mes fichiers texte depuis le répertoire d'origine vers le répertoire de destination.
 
-Note: If you are in the directory that you either want to move things to or from, you do not have to type out the whole directory structure. Let's do two quick examples. Change your directory to the `proghist-text` directory. From this location, if you wanted to copy these two files to `proghist-dest`, this command would work:
+Note : si vous êtes dans le dossier vers lequel ou depuis lequel vous souhaitez copier, il n'est pas nécessaire de spécifier l'ensemble du chemin d'accès. Pour voir ce que cela donne, déplacer vous vers `proghist-text`. Depuis ce répertoire, si vous voulez copier les deux fichiers vers `proghist-dest`, vous pouvez le faire à l'aide de la commande suivante : 
 
-`cp *.txt /users/ianmilligan1/desktop/proghist-dest/` (on OS X, substitute the directory on Windows)
+`cp *.txt /users/ianmilligan1/desktop/proghist-dest/` (exemple sur OS X, à adapter au niveau du répertoire pour Windows)
 
-Alternatively, if you were in the `proghist-dest` directory, this command would work:
+De la même manière, si vous vous trouver dans le répertoire `proghist-dest`, la commande suivante fonctionnerait :
 
 `cp /users/ianmilligan1/desktop/proghist-text/*.txt ./`
 
-The `./` command refers to the **current** directory you're in. **This is a really valuable command.**
+`./` fait référence au **répertoire courant** dans lequel vous vous trouvez. **C'est une option à retenir.**
 
-Finally, if you want to delete a file, for whatever reason, the command is `rm`, or remove. **Be careful with the `rm` command**, as you don't want to delete files that you do not mean to. Unlike deleting from within your GUI, there is **no** recycling bin or undo options. For that reason, if you are in doubt, you may want to exercise caution or maintain a regular backup of your data.
+Si vous avez besoin de supprimer un fichier pour une raison quelconque, la commande à utiliser est `rm` (pour remove). **Soyez très prudent avec la commande `rm`** pour ne pas supprimer de fichiers sans le vouloir. Contrairement à une suppression via l'interface graphique, il n'y a **pas** de corbeille ou de possibilité d'annuler. C'est la raison pour laquelle, en cas de doute il est important de procéder à des sauvegardes régulières de vos données.
 
-Move to `proghist-text` and delete the original file by typing
+Déplacez vous vers `proghist-text` et supprimez le fichier original à l'aide de la commande : 
 
 `rm tolstoy.txt`
 
-Check that the file is gone using the `ls` command.
+Vous pouvez contrôler que la suppression a bien eu lieu à l'aide de la commande `ls`. 
 
-If you wanted to delete an entire directory, you have two options. you can use `rmdir`, the opposite of `mkdir`, to delete an **empty** directory. To delete a directory with files, you could use from the desktop:
+Si vous avez besoin de supprimer l'ensemble d'un répertoire, il existe deux options. Vous pouvez utiliser la commande `rmdir`, opposée à `mkdir`, qui vous permettra de supprimer un répertoire **vide**. Pour supprimer un répertoire qui contient des fichiers, la commande à utiliser, depuis le bureau dans le cas présent est : 
 
 `rm -r proghist-text`
 
 ## Conclusions
 
-You may want to take a break from the terminal at this point. To do so, enter `exit` and you'll close your session. 
+Arrivé ici, vous aurez peut-être envie de faire une pause du terminal. Pour cela, il suffit d'entrer `exit` pour fermer la fenêtre du terminal.
 
-There are more commands to try as you get more comfortable with the command line. Some of our other favourites are `du`, which is a way to find out how much memory is being used (`du -h` makes it human readable — as with other commands). For those of you on OS X, `top` provides an overview of what processes are running (`mem` on Windows) and `touch FILENAME` can create a basic text file on both systems
+Il existe d'autres commandes que vous pourrez utiliser au fur et à mesure que vous deviendrez plus à l'aide avec la ligne de commande. Une de nos préférées est `du`, qui vous permet d'identifier l'espace disque occupe (`du -h` vous donne un afficage plus lisible, comme sur d'autres commandes). Si vous utilisez OS X, `top` vous donne des informations sur les processus en cours (`mem` sur Windows) et `touch NOM_DE_FICHIER` crée un fichier texte vide.
 
-By this point, we hope you have a good, basic understanding of how to move around using the command line, move basic files, and make minor edits here and there. This beginner-level lesson is designed to give you some basic fluency and confidence. In the future, you may want to get involved with scripting.
+Vous disposez maintenant des bases pour vous déplacer dans l'arborescence à l'aide de la ligne de commande, copier des fichiers et faire des modifications ponctuelles. Cette leçon de niveau débutant a pour but de vous donner confiance dans l'utilisation du terminal. Dans le futur, vous pourrez utiliser ces bases pour commencer l'écriture de scripts. 
 
-Have fun! Before you know it, you may find yourself liking the convenience and precision of the command line - for certain applications, at least - far more than the bulkier GUI that your system came with. Your toolkit just got bigger.
+Amusez vous ! Avant de vous en rendre compte vous allez peut-être prendre goût à l'efficacité et à la précision de la ligne de commande et l'utiliser - dans certains cas tout du moins - plus facilement que les outils parfois lourds livrés avec votre système. Votre boîte à outils ne s'en trouvera qu'élargie.
 
-## Reference Guide
+## Guide de référence
 
-For your convenience, here are the commands that you have learned in this lesson:
+Voici un pense-bête des commandes que vous avez vues au cours de cette leçon : 
 
 | Command | What It Does |
 |---------|--------------|
-| `pwd` | Prints the 'present working directory,' letting you know where you are. |
-| `ls` | Lists the files in the current directory
-| `man *` | Lists the manual for the command, substituted for the `*`
-| `cd *` | Changes the current directory to `*`
-| `mkdir *` | Makes a directory named `*`
-| `open` or `explorer` | On OS X, `open` followed by a file opens it; in Windows, the command `explorer` followed by a file name does the same thing.
-| `cat *` | `cat` is a versatile command. It will read a file to you if you substitute a file for `*`, but can also be used to combine files.
-| `head *` | Displays the first ten lines of `*`
-| `tail *` | Displays the last ten lines of `*`
-| `mv` | Moves a file
-| `cp` | Copies a file
-| `rm` | Deletes a file
-| `vim` | Opens up the `vim` document editor.
+| `pwd` | Affiche le répertoire courant ('present working directory'), pour que vous sachiez où vous vous trouvez. |
+| `ls` | Lister les fichiers dans le répertoire courant
+| `man *` | Affiche le manuel pour la command `*`
+| `cd *` | Change le répertoire courant pour `*`
+| `mkdir *` | Crée un répertoire nommé `*`
+| `open` or `explorer` | Sur OS X, `open` suivi d'un nom de fichier ouvre ce dernier; Sur Windows, la commande `explorer` suivi d'un nom de fichier fait la même chose.
+| `cat *` | `cat` est une commande versatile. Elle va lire le fichier `*` mais peut aussi être utilisée pour combiner plusieurs fichiers.
+| `head *` | Affiche les 10 premières lignes de `*`
+| `tail *` | Affiche les 10 dernières lignes de `*`
+| `mv` | Déplace un fichier
+| `cp` | Copie un fichier
+| `rm` | Supprime un fichier
+| `vim` | Ouvre l'éditeur de texte `vim`.
