@@ -48,7 +48,7 @@ Si ce n'est pas déjà fait, les utilisateurs de Windows devront installer Git B
 
 Cette leçon a été écrite à l'aide de Git Bash 1.9.0 sur Windows 7. Les chemins équivalents pour OS X/Linux ont été fournis autant que possible. Cependant les options et la manière de les appeler peut changer sensiblement entre les sytèmes, les utilisateurs d'OS X et Linux sont donc invités à consulter l'ouvrage de Deborah S. Ray et Eric J. Ray, "[*Unix and Linux: Visual Quickstart Guide*](https://www.worldcat.org/title/unix-and-linux/oclc/308171076&referer=brief_results)", 4th edition (2009) qui couvre en détail les questions d'interopérabilité.
 
-Les fichiers utilisés dans cette leçon sont disponibles sur "[Figshare](http://dx.doi.org/10.6084/m9.figshare.1172094)". Les fichiers proposés contiennent les métadonnées pour les articles affectés à la catégorie 'History' de la base de données British Library ESTAR. Les données sont distribuées sous licence CC0. 
+Les fichiers de données utilisés ici sont disponibles sur "[Figshare](http://dx.doi.org/10.6084/m9.figshare.1172094)". Les fichiers proposés contiennent les métadonnées pour les articles affectés à la catégorie 'History' de la base de données British Library ESTAR. Les données sont distribuées sous licence CC0. 
 
 Téléchargez les fichiers, enregistrez les sur votre ordinateur et dézippez les. Si vous n'avez pas de logiciel pour extraire les fichiers .zip, nous vous conseillons [7-zip](http://www.7-zip.org/). Sur Windows, nous vous conseillons de mettre les fichiers sur C:. Le dossier concerné sera donc `c:\proghist\`. N'importe quel autre dossier ferait l'affaire mais dans ce cas là, il faudra adapter les commandes proposées dans cette leçon pour refléter votre choix. Sur OS X et Linux, nous vous recommandons de créer un dossier à la racine de votre dossier utilisateur. Les fichiers de la leçon apparaîtront donc sous `/user/USERNAME/proghist`. Dans tous les cas, l'idée et qu'à l'ouverture du terminal, vous n'ayez qu'à taper `cd proghist` pour vous rendre dans le répertoire de la leçon.
 
@@ -70,19 +70,19 @@ Le sous-dossier se nomme `derived_data`. It contient quatre fichiers [.tsv](http
 
 *Note : les fichiers [CSV](http://fr.wikipedia.org/wiki/Comma-separated_values) sont ceux pour lesquels les colonnes sont séparées par des virgules (comma en anglais, comma-separated-values) et les fichiers TSV sont ceux dans lesquels les colonnes sont séparées par des tabulations. Les deux peuvent se lire avec un simple éditeur de texte ou avec un tableau tel que LibreOffice Calc ou Microsoft Excel.*
 
-Before you begin working with these files, you should move into the directory in which they are stored. Navigate to `c:\proghist\data\derived_data` on Windows or `~/users/USERNAME/proghist/data/derived_data` on OS X.
+Avant de commencer, déplacez vous dans le répertoire qui contient les fichiers : `c:\proghist\data\derived_data` sur Windows ou `~/users/USERNAME/proghist/data/derived_data` sur OS X.
 
-Now that you are here you can count the contents of the files.
+Maintenant que vous êtes là, vous pouvez compter ce qui se trouve dans ces fichiers.
 
-The Unix command for counting is `wc`. Type `wc -w 2014-01-31_JA_africa.tsv` and hit enter. The flag `-w` combined with `wc` instructs the computer to print a word count, and the name of the file that has been counted, into the shell.
+La commande Unix pour faire ce type d'analyse est `wc`. Tapez `wc -w 2014-01-31_JA_africa.tsv` et appuyez sur entrée. Le paramètre `-w` associé à la commande `wc` demande à la machine d'afficher le nombre de mots et le nom du fichier dans le terminal.
 
-As was seen in "[Introduction to the Bash Command Line](../lessons/intro-to-bash)", flags such as `-w` are an essential part of getting the most out of the Unix shell as they give you better control over commands.
+Comme nous l'avons vu dans la leçon "[Introduction à la ligne de commande avec Bash](bash-intro)", les paramètres tels que `w` sont essentiels pour tirer le meilleur parti des commandes Unix.
 
-If your research is more concerned with the number of entries (or lines) than the number of words, you can use the line count flag. Type `wc -l 2014-01-31_JA_africa.tsv` and hit enter. Combined with `wc` the flag `-l` prints a line count and the name of the file that has been counted.
+Si vous êtes plus intéressés par le nombre d'entrées (ou de lignes) que le nombre de mots, il existe un paramètre "nombre de lignes". Entrez `wc -l 2014-01-31_JA_africa.tsv` et appuyez sur entrée. En combinaison avec `wc`, le paramètre `-l` affiche le nombre de lignes et le nom du fichier.
 
-Finally, type `wc -c 2014-01-31_JA_africa.tsv` and hit enter. This uses the flag `-c` in combination with the command `wc` to print a character count for `2014-01-31_JA_africa.tsv`.
+Pour finir, tapez `wc -c 2014-01-31_JA_africa.tsv` et appuyez sur entrée. Le paramètre `-c` permet d'obtenir le nombre de caractères présents dans le fichier `2014-01-31_JA_africa.tsv`.
 
-*Note: OS X and Linux users should replace the `-c` flag with `-m`.*
+*Note : les utilisateurs d'OS X et Linux devront remplacer le paramètre `-c` par `-m`.*
 
 With these three flags, the most obvious thing historians can use `wc` for is to quickly compare the shape of sources in digital format - for example word counts per page of a book, the distribution of characters per page across a collection of newspapers, the average line lengths used by poets. You can also use `wc` with a combination of wildcards and flags to build more complex queries. Type `wc -l 2014-01-31_JA_a*.tsv` and hit enter. This prints the line counts for `2014-01-31_JA_africa.tsv` and `2014-01-31_JA_america.tsv`, offering a simple means of comparing these two sets of research data. Of course, it may be faster to compare the line count for the two documents in Libre Office Calc, Microsoft Excel, or a similar spreadsheet program. But when wishing to compare the line count for tens, hundreds, or thousands of documents, the Unix shell has a clear speed advantage.
 
