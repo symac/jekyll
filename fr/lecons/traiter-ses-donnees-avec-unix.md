@@ -1,5 +1,5 @@
 ---
-title: Analyser ses données de recherche avec Unix
+title: Analyser ses données de recherche avec le terminal
 layout: lesson
 date: 2014-09-20
 authors: 
@@ -28,7 +28,7 @@ redirect_from: /fr/lessons/research-data-with-unix
 {% include toc.html %}
 
 
-# XXXXXXXXXXXXXXXXX Counting and mining research data with Unix
+# Analyser ses données avec le terminal
 
 ## Introduction
 
@@ -96,41 +96,38 @@ Pour commencer à utiliser `grep`, commencez à vous placer dans le dossier `der
 
 *Note : étant donné qu'un certains nombre de lignes correspondent à la recherche, si vous vous lassez de voir défiler les résultats à l'écran, appuyez sur `ctrl+c` pour annuler l'action. Ctrl+c est le raccourci à utiliser dans le terminal pour terminer le processus en cours.*
 
-Pressez maintenant sur la flèche "haut" pour remonter à l'action précédente. 
+Pressez maintenant sur la flèche "haut" pour remonter à l'action précédente. Remplacez `grep 1999 *.tsv` par `grep -c 1999 *.tsv` et appuyez sur entrée. Le terminal va maintenant afficher le nombre de fois où le terme 1999 apparaît dans chaque fichier .tsv. Remontez à nouveau à l'instruction précédente et remplacez la par : `grep -c 1999 2014-01-31_JA_*.tsv > results/2014-01-31_JA_1999.txt`avant d'appuyer sur entrée. Cette commande va rechercher les occurences de '1999' dans les fichiers tsv sur dossier et enregistré les résultats dans le fichier `2014-01-31_JA_1999.txt` sur répertoire `results`.
 
-Press the up arrow once in order to cycle back to your most recent action. Remplacez `grep 1999 *.tsv` par `grep -c 1999 *.tsv` et appuyez sur entrée. Le terminal va maintenant afficher le nombre de fois où le terme 1999 apparaît dans chaque fichier .tsv. Remontez à nouveau à l'instruction précédente 
 
-The shell now prints the number of times the string 1999 appeared in each .tsv file. Cycle to the previous line again and amend this to `grep -c 1999 2014-01-31_JA_*.tsv > results/2014-01-31_JA_1999.txt` and hit enter. This query looks for instances of the string '1999' across all documents that fit the criteria and saves them as `2014-01-31_JA_1999.txt` in the `results` subdirectory.
+Dans les exemples précédents on a cherché un nombre, mais la commande grep s'applique à tous les types de chaînes de caractères. `grep -c revolution 2014-01-31_JA_america.tsv 2014-02-02_JA_britain.tsv` va par exemple chercher toutes les occurences du mot 'revolution' dans les fichiers passés en paramètre. Après avoir essayé cette commande, remplacez la par `grep -ci revolution 2014-01-31_JA_america.tsv 2014-02-02_JA_britain.tsv`. Cette nouvelle commande va effectuer une recherche insensible à la casse, et retourner les lignes qui contiennent `revolution` mais aussi `Revolution`, soit 30 fois plus de résultats dans le cas présent. Comme tout à l'heure, on peut enregistrer le résultat en ajoutant `> results/` suivi d'un nom de fichier.
 
-Strings need not be numbers. `grep -c revolution 2014-01-31_JA_america.tsv 2014-02-02_JA_britain.tsv`, for example, counts the instances of the string `revolution` within the defined files and prints those counts to the shell. Run this and then amend it to `grep -ci revolution 2014-01-31_JA_america.tsv 2014-02-02_JA_britain.tsv`. This repeats the query, but prints a case insensitive count (including instances of both `revolution` and `Revolution`). Note how the count has increased nearly 30 fold for those journal article titles that contain the keyword 'revolution'. As before, cycling back and adding `> results/`, followed by a filename (ideally in .txt format), will save the results to a data file.
+Combiné avec le paramètre `-c` grep nous a permis de faire des comptages dans les fichiers mais la commande peut aussi être utilisée pour créer des sous-corpus. Tapez `grep -i revolution 2014-01-31_JA_america.tsv 2014-02-02_JA_britain.tsv > ANNNEE-MOIS-JOUR_JA_america_britain_i_revolution.tsv` (where `ANNEE-MOIS-JOUR` correspond à la date à laquelle vous effectuez l'opération) et appuyez sur entrée. Cette commande va isoler les lignes contenant 'revolution' (ou 'Revolution', 'REVOLUTION' et toutes les combinaisons de casse possible) et les enregistrer dans le fichier .tsv daté du jour.
 
-You can also use `grep` to create subsets of tabulated data. Type `grep -i revolution 2014-01-31_JA_america.tsv 2014-02-02_JA_britain.tsv > YEAR-MONTH-DAY_JA_america_britain_i_revolution.tsv` (where `YEAR-MONTH-DAY` is the date you are completing this lesson) and hit enter. This command looks in both of the defined files and exports any lines containing `revolution` (without regard to case) to the specified .tsv file.
+Nous n'avons pas enregistré ce nouveau fichier dans le répertoire `results` car ce n'est pas un résultat à proprement parler mais plutôt un fichier dérivé. Selon votre méthode de travail vous souhaiterez peut-être sauver ces fichiers dérivés dans un dossier spécifique. Pour le moment, vérifiez que le fichier correspond bien à vos attentes et si c'est bon, vous pouvez le supprimer à l'aide de la commande `rm`. *Note : la commande `rm` est très puissant et doit être utilisée avec prudence. Consultez l'"[introduction à Bash](bash-intro)" pour comprendre comment l'utiliser au mieux.*
 
-The data has not been saved to to the `results` directory because it isn't strictly a result; it is derived data. Depending on your research project it may be easier to save this to another subdirectory. For now have a look at this file to verify its contents and when you are happy, delete it using the `rm` command. *Note: the `rm` common is very powerful and should be used with caution. Please refer to "[Introduction to the Bash Command Line](../lessons/intro-to-bash)" for instructions on how to use this command correctly.*
+Un autre paramètre utile de la commande `grep` est `v` qui permet d'exclure certaines lignes d'un résultat. Par exemple `grep -iv revolution 2014*_JA_a*.tsv > 2014_JA_iv_revolution.csv` va regarder dans les trois fichiers correspondant au schéma proposé (`2014-01-31_JA_africa.tsv, `2014-02-01_JA_art.tsv` et `2014-01-31_JA_america.tsv` mais pas `2014-02-02_JA_britain.tsv` car on demande les fichiers dans lesquels le mot après JA_ commence par un a) les lignes qui ne contiennent par `revolution` ou `Revolution`. Le résultat est enregistré dans `c:\proghist\data\derived_data\2014_JA_iv_revolution.csv` (sur Windows, ou le chemin correspondant sur un autre système).
 
-Finally, you can use another flag, `-v`, to exclude data elements when using the `grep` command. Type `grep -iv revolution 2014*_JA_a*.tsv > 2014_JA_iv_revolution.csv` and hit enter. This query looks in the defined files (three in total) and exports all lines that do not contain `revolution` or `Revolution` to `c:\proghist\data\derived_data\2014_JA_iv_revolution.csv`.
+Vous noterez dans cette dernière opération que l'on a choisi d'exporter les données dans un fichier .csv plutôt que .tsv. S'il ne change pas le contenu du fichier car `grep` se contente de recopier les lignes qui correspond au schéma choisi, cette différence d'extension risque d'avoir une influence sur la manière dont d'autres programmes vont comprendre le document. Lancez la même commande que précédemment en sauvant les résultats en .tsv (`grep -iv revolution 2014*_JA_a*.tsv > 2014_JA_iv_revolution.tsv`), vous aurez donc deux fichiers identiques à l'exception de l'extension. Si vous ouvrez ces deux fichiers dans un tableur, ce dernier cherchera un délimiteur de colonnes différents selon l'extension et le résultat à l'affichage risque de ne pas correspondre à vos attentes, selon le délimiteur effectivement utilisé dans le fichier.
 
-Note that you have transformed the data from one format to another - from .tsv to .csv. Often there is a loss of data structure when undertaking such transformations. To observe this for yourself, run `grep -iv revolution 2014*_JA_a*.tsv > 2014_JA_iv_revolution.tsv` and open both the .csv and .tsv files in Libre Office Calc, Microsoft Excel, or a similar spreadsheet program. Note the differences in column delineation between the two files.
+*Résumé*
 
-*Summary*
+Avec le terminal vous savez désormais :
 
-Within the Unix shell you can now:
-
-- use the `wc` command with the flags `-w` and `-l` to count the words and lines in a file or a series of files.
-- use the redirector and structure `> subdirectory/filename` to save results into a subdirectory.
-- use the `grep` command to search for instances of a string.
-- use with `grep` the `-c` flag to count instances of a string, the `-i` flag to return a case insensitive search for a string, and the `-v` flag to exclude a string from the results.
-- combine these commands and flags to build complex queries in a way that suggests the potential for using the Unix shell to count and mine your research data and research projects.
+- utiliser la commande `wc` avec les paramètres `-w` et `-l` pour compter mots et lignes à l'intérieur d'un fichier ou d'une série de fichiers;
+- utiliser les redirections et leur forme `> subdirectory/filename` pour enregistrer des résultats dans un sous-dossier; 
+- utiliser la commande `grep` pour rechercher des chaînes de caractères;
+- utiliser la commande `grep` avec les paramètres `-c` pour compter les occurences d'une chaîne, `i` pour faire une recherche non sensible à la casse et `v` pour exclure certaines chaînes de résultats.
+- combiner ces commandes et leurs paramètres pour construire des requêtes complexes qui vous permettront de commencer à utiliser au mieux le potentiel du terminal pour analyser vos fichiers.
 
 _____
 
 #### Conclusion
 
-In this lesson you have learnt to undertake some basic file counting, to query across research data for common strings, and to save results and derived data. Though this lesson is restricted to using the Unix shell to count and mine tabulated data, the processes can be easily extended to free text. For this we recommend two guides written by William Turkel:
+À travers cette leçon, vous avez appris quelques bases pour analyser des fichiers et enregistrer les résultats. Nous nous sommes contentés ici d'exemples sur des fichiers tabulés mais ces fonctions peuvent être utilisés sur n'importe quel fichier texte, y-compris pour du texte libre. Pour cela, nous vous recommandons deux guides rédigés par William Turkel (en anglais) : 
 
 - William Turkel, '[Basic Text Analysis with Command Line Tools in Linux](http://williamjturkel.net/2013/06/15/basic-text-analysis-with-command-line-tools-in-linux/)' (15 June 2013)  
 - William Turkel, '[Pattern Matching and Permuted Term Indexing with Command Line Tools in Linux](http://williamjturkel.net/2013/06/20/pattern-matching-and-permuted-term-indexing-with-command-line-tools-in-linux/)' (20 June 2013)  
 
-As these recommendations suggest, the present lesson only scratches the surface of what the Unix shell environment is capable of. It is hoped, however, that this lesson has provided a taster sufficient to prompt further investigation and productive play. 
+Cette leçon se contente de survoler les possibilités offertes par le terminal dans l'analyse de fichiers, en espérant vous donner envie d'aller plus loin pour devenir pleinement efficace dans cet environnement.
 
-For many historians, the full potential of these tools may only emerge upon embedding these skills into a real research project. Once your research grows, and, with it, your research data, being able to manipulate, count and mine thousands of files will be extremely useful. For if you choose to build on this lesson and investigate the Unix shell further you will find that even a large collection of files which do not contain any alpha-numeric data elements, such as image files, can be easily sorted, selected and queried in the Unix shell.
+C'est en intégrant ces outils à un projet de recherche concret, dans lequel les résultats s'accumulant, il deviendra primordial de pouvoir manipuler des milliers de fichiers à la fois. Si vous continuez à vous renseigner sur ces outils, vous verrez que même si vous devez travailler sur des fichiers ne contenant pas d'information textuelle (des images par exemple), le terminal vous permettra de les rechercher, de faire des tris, etc.
